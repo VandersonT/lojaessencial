@@ -1,25 +1,17 @@
 <template>
     <div>
         <section class="boxContent">
-            
-            Home - {{(logged) ? 'logado' : 'deslogado'}}
-
+            login
         </section>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
 
+    import axios from 'axios'
     export default {
         components: {
             
-        },
-        data(){
-            return {
-                logged: false,
-                loggedUser: []
-            }
         },
         beforeCreate(){
             axios
@@ -27,12 +19,10 @@
                     'currentToken': ''
                 })
                 .then((r)=>{
-                    //Se o usuário estiver logado o sistema pega os dados da conta
-                    this.logged = r.data.logged;
-                    if(this.logged){
-                        this.loggedUser = r.data.loggedUser;
+                    //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
+                    if(r.data.logged){
+                        this.$router.push('/') 
                     }
-
                 });
         }
     }
