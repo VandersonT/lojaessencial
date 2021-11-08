@@ -10,15 +10,14 @@
         <div class="menut">
             <div class="menu">
                 <ul v-show="!isLogged && !loadingHeader">
-                    <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/">Home</li>
-                    <li v-on:click="changeSelected('/login')" class="btn" :class="(selected == '/login') ? 'selected' : ''" to="/login">Login</li>
-                    <li v-on:click="changeSelected('/register')" class="btn" :class="(selected == '/register') ? 'selected' : ''" to="/register">Cadastrar</li>
+                    <li v-on:click="changeSelected('/login')" class="btn" :class="(selected == '/login') ? 'selected' : ''" to="/login">Entrar</li>
+                    <li v-on:click="changeSelected('/register')" class="btn" :class="(selected == '/register') ? 'selected' : ''" to="/register">Cadastre-se</li>
                 </ul>
 
                 <ul v-show="isLogged && !loadingHeader">
                     <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/"><i class="fas fa-home"></i></li>
-                    <li v-on:click="changeSelected('/favorites')" class="btn" :class="(selected == '/favorites') ? 'selected' : ''" to="/"><i class="fas fa-heart heart"></i></li>
-                    <li v-on:click="changeSelected('/kart')" class="btn" :class="(selected == '/kart') ? 'selected' : ''" to="/"><i class="fas fa-shopping-cart kart"></i></li>
+                    <li v-on:click="changeSelected('/favoritos')" class="btn" :class="(selected == '/favoritos') ? 'selected' : ''" to="/"><i class="fas fa-heart heart"></i></li>
+                    <li v-on:click="changeSelected('/carrinho')" class="btn" :class="(selected == '/carrinho') ? 'selected' : ''" to="/"><i class="fas fa-shopping-cart kart"></i></li>
                     <div class="profileIcon" v-on:click="openMenuSlide()">
                         <img :src="isLogged.photo" />
                     </div>
@@ -67,7 +66,7 @@
         beforeCreate(){
             axios
                 .post('http://127.0.0.1:8000/api/userAuth',{
-                    'currentToken': 'b4e5b9cd972ec187589039cc81fec82a'
+                    'currentToken': 'b4e5b9cd972ec187589039cc81fec82a1'
                 })
                 .then((r)=>{
                     //Se o usuário estiver logado o sistema pega os dados da conta
@@ -133,7 +132,7 @@
     .menu .btn{
         margin-right:  15px;
         list-style: none;
-        font-size: 18px;
+        font-size: 16px;
         cursor: pointer;
         border-bottom: 1px solid transparent;
         color: rgb(236, 236, 236);
@@ -162,11 +161,11 @@
         position: fixed;
         right: 10px;
         top: 56px;
-        background: rgb(51, 51, 51);
+        background: rgb(71, 71, 71);
         /*display: flex;*/
         flex-direction: column;
         align-items: center;
-        border-radius: 5px;
+        border-radius: 2px;
     }
     .menuSlide .btnMenuSlide{
         width: 100%;
@@ -182,4 +181,24 @@
     .loading{
         color: white;
     }
+    /*RESPONSIVE*/
+    @media screen and (max-width: 630px){
+        .boxMenu{
+            padding: 0 10px;
+        }
+        .boxSearch{
+            display: none;
+        }
+        .menu .btn{
+            font-size: 14px;
+        }
+        .logo{
+            width: 55px;
+            height: 60%;
+        }
+        .profileIcon{
+            margin-left: 0;
+        }
+    }
+    
 </style>
