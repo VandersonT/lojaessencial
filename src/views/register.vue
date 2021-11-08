@@ -1,7 +1,7 @@
 <template>
     <div>
-        <section class="boxLogin">
-            login
+        <section class="boxContent">
+            cadastro
         </section>
     </div>
 </template>
@@ -29,11 +29,5 @@
 </script>
 
 <style>
-    .boxLogin{
-        width: 100vw;
-        max-width: 100%;
-        height: calc(100vh - 70px);
-        margin-top: 70px;
-        background-color: rgb(190, 190, 190);
-    }
+    
 </style>

@@ -11,7 +11,7 @@
             <div class="menu">
                 <ul v-show="!isLogged && !loadingHeader">
                     <li v-on:click="changeSelected('/login')" class="btn" :class="(selected == '/login') ? 'selected' : ''" to="/login">Entrar</li>
-                    <li v-on:click="changeSelected('/register')" class="btn" :class="(selected == '/register') ? 'selected' : ''" to="/register">Cadastre-se</li>
+                    <li v-on:click="changeSelected('/cadastro')" class="btn" :class="(selected == '/cadastro') ? 'selected' : ''" to="/register">Cadastre-se</li>
                 </ul>
 
                 <ul v-show="isLogged && !loadingHeader">
@@ -27,7 +27,6 @@
                         <router-link to="/sair" class="btnMenuSlide">Sair</router-link>
                     </div>
                 </ul>
-
                 <p class="loading" v-show="loadingHeader">Carregando...</p>
 
             </div>
@@ -38,12 +37,14 @@
 <script>
     import axios from 'axios'
     
+    var currentPage = window.location.href.split('/')[4];
+
     export default {
         name: 'loggedoutHeader',
         data(){
             return {
                 search: '',
-                selected: '/',
+                selected: '/'+currentPage,
                 isLogged: false,
                 loadingHeader: true,
                 menuSlideIsOpen: false
@@ -66,7 +67,7 @@
         beforeCreate(){
             axios
                 .post('http://127.0.0.1:8000/api/userAuth',{
-                    'currentToken': 'b4e5b9cd972ec187589039cc81fec82a1'
+                    'currentToken': ''
                 })
                 .then((r)=>{
                     //Se o usuário estiver logado o sistema pega os dados da conta
@@ -86,6 +87,8 @@
 <style>
     .boxMenu{
         position: fixed;
+        top: 0;
+        left: 0;
         width: 100vw;
         max-width: 100%;
         height: 70px;
