@@ -1,6 +1,6 @@
 <template>
     <div class="boxMenu">
-        <router-link class="logo" to="/login"></router-link>
+        <div v-on:click="changeSelected('/')" class="logo" to="/"></div>
 
         <div class="boxSearch">
            <input type="text" v-model="search" placeholder="Busque por algum produto" />
@@ -17,10 +17,15 @@
 
                 <ul v-show="isLogged && !loadingHeader">
                     <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/"><i class="fas fa-home"></i></li>
-                    <li v-on:click="changeSelected('/favorites')" class="btn" :class="(selected == '/favorites') ? 'selected' : ''" to="/"><i class="fas fa-heart"></i></li>
-                    <li v-on:click="changeSelected('/kart')" class="btn" :class="(selected == '/kart') ? 'selected' : ''" to="/"><i class="fas fa-shopping-cart"></i></li>
-                    <div class="profileIcon">
+                    <li v-on:click="changeSelected('/favorites')" class="btn" :class="(selected == '/favorites') ? 'selected' : ''" to="/"><i class="fas fa-heart heart"></i></li>
+                    <li v-on:click="changeSelected('/kart')" class="btn" :class="(selected == '/kart') ? 'selected' : ''" to="/"><i class="fas fa-shopping-cart kart"></i></li>
+                    <div class="profileIcon" v-on:click="openMenuSlide()">
                         <img :src="isLogged.photo" />
+                    </div>
+                    <div class="menuSlide">
+                        <router-link to="/perfil" class="btnMenuSlide">Seu perfil</router-link>
+                        <router-link to="/configuração" class="btnMenuSlide">Configuração</router-link>
+                        <router-link to="/sair" class="btnMenuSlide">Sair</router-link>
                     </div>
                 </ul>
 
@@ -41,13 +46,22 @@
                 search: '',
                 selected: '/',
                 isLogged: false,
-                loadingHeader: true
+                loadingHeader: true,
+                menuSlideIsOpen: false
             }
         },
         methods:{
             changeSelected: function(route){
                 this.$router.push(route) 
                 this.selected = route;
+            },
+            openMenuSlide: function(){
+                if(this.menuSlideIsOpen){
+                    document.querySelector('.menuSlide').style.display = 'none';
+                }else{
+                    document.querySelector('.menuSlide').style.display = 'flex';
+                }
+                this.menuSlideIsOpen = !this.menuSlideIsOpen;
             }
         },
         beforeCreate(){
@@ -71,9 +85,6 @@
 </script>
 
 <style>
-    .loading{
-        color: white;
-    }
     .boxMenu{
         position: fixed;
         width: 100vw;
@@ -91,6 +102,7 @@
         background-image: url('../assets/images/logo2.png');
         background-position: center;
         background-size: 100% 100%;
+        cursor: pointer;
     }
 
     .boxSearch input{
@@ -124,14 +136,15 @@
         font-size: 18px;
         cursor: pointer;
         border-bottom: 1px solid transparent;
-        color: white;
+        color: rgb(236, 236, 236);
         text-decoration: none;
     }
 
     .selected,
     .menu .btn:hover{
-        border-bottom: 1px solid white !important;
+        border-bottom: 1px solid rgb(236, 236, 236) !important;
     }
+
     .profileIcon{
         width: 40px;
         height: 40px;
@@ -142,5 +155,31 @@
         width: 100%;
         height: 100%;
         border-radius: 50px;
+    }
+
+    .menuSlide{
+        display: none;
+        position: fixed;
+        right: 10px;
+        top: 56px;
+        background: rgb(51, 51, 51);
+        /*display: flex;*/
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+    }
+    .menuSlide .btnMenuSlide{
+        width: 100%;
+        text-align: center;
+        padding: 7px 15px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        border-bottom: 1px solid rgb(105, 105, 105);
+    }
+    .menuSlide .btnMenuSlide:hover{
+        background: rgb(0, 134, 211);
+    }
+    .loading{
+        color: white;
     }
 </style>

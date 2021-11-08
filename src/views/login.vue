@@ -21,7 +21,7 @@
                 .then((r)=>{
                     //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
                     if(r.data.logged){
-                        this.$router.push('/') 
+                        location.href = document.referrer;
                     }
                 });
         }
