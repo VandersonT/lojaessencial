@@ -6,6 +6,7 @@
                 <i class="fab fa-angellist"></i>
             </h1>
         </section>
+        teste
     </div>
 </template>
 
@@ -35,6 +36,10 @@
                     }
 
                 });
+        },
+        mounted(){
+            var height = window.innerHeight - 69;
+            document.querySelector('.boxMainImage').style.height = height+'px';
         }
     }
 </script>
@@ -43,12 +48,12 @@
     .boxMainImage{
         width: 100vw;
         max-width: 100%;
-        height: 600px;
+        height: 730px;
         margin-top: 70px;
         background-color: rgb(107, 20, 20);
         background-image: url('../assets/images/mainBanner.jpg');
         background-position: center;
-        background-size: 100% 100%;
+        background-size: cover;
     }
 
     .mainPhrase{
@@ -71,23 +76,20 @@
             font-size: 25px;
         }
     }
-    @media screen and (max-width: 900px){
+    @media screen and (max-width: 1020px){
         .mainPhrase{
             left: 3%;
             font-size: 25px;
         }
-        .boxMainImage{
-            background-size: cover;
-        }
     }
-    @media screen and (max-width: 630px){
+    @media screen and (max-width: 850px){
         .boxMainImage{
             background-image: url('../assets/images/mainBannerMobile.jpg');
         }
         .mainPhrase{
             width: 350px;
             top: 10%;
-            left: 16%;
+            left: 20%;
             font-size: 27px;
         }
     }
@@ -97,22 +99,6 @@
             top: 10%;
             left: 5%;
             font-size: 23px;
-        }
-    }
-
-    @media screen and (max-height: 670px){
-        .boxMainImage{
-            height: 500px;
-        }
-    }
-    @media screen and (max-height: 550px){
-        .boxMainImage{
-            height: 450px;
-        }
-    }
-    @media screen and (max-height: 480px){
-        .boxMainImage{
-            height: 400px;
         }
     }
 </style>
