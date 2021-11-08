@@ -6,23 +6,42 @@
            <input type="text" v-model="search" placeholder="Busque por algum produto" />
            <button><i class="fas fa-search"></i></button>
         </div>
-        <div class="menu">
-            <ul>
-                <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/">Home</li>
-                <li v-on:click="changeSelected('/login')" class="btn" :class="(selected == '/login') ? 'selected' : ''" to="/login">Login</li>
-                <li v-on:click="changeSelected('/register')" class="btn" :class="(selected == '/register') ? 'selected' : ''" to="/register">Cadastrar</li>
-            </ul>
+
+        <div class="menut">
+            <div class="menu">
+                <ul v-show="!isLogged && !loadingHeader">
+                    <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/">Home</li>
+                    <li v-on:click="changeSelected('/login')" class="btn" :class="(selected == '/login') ? 'selected' : ''" to="/login">Login</li>
+                    <li v-on:click="changeSelected('/register')" class="btn" :class="(selected == '/register') ? 'selected' : ''" to="/register">Cadastrar</li>
+                </ul>
+
+                <ul v-show="isLogged && !loadingHeader">
+                    <li v-on:click="changeSelected('/')" class="btn" :class="(selected == '/') ? 'selected' : ''" to="/"><i class="fas fa-home"></i></li>
+                    <li v-on:click="changeSelected('/favorites')" class="btn" :class="(selected == '/favorites') ? 'selected' : ''" to="/"><i class="fas fa-heart"></i></li>
+                    <li v-on:click="changeSelected('/kart')" class="btn" :class="(selected == '/kart') ? 'selected' : ''" to="/"><i class="fas fa-shopping-cart"></i></li>
+                    <div class="profileIcon">
+                        <img :src="isLogged.photo" />
+                    </div>
+                </ul>
+
+                <p class="loading" v-show="loadingHeader">Carregando...</p>
+
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
+    
     export default {
         name: 'loggedoutHeader',
         data(){
             return {
                 search: '',
-                selected: '/'
+                selected: '/',
+                isLogged: false,
+                loadingHeader: true
             }
         },
         methods:{
@@ -30,12 +49,29 @@
                 this.$router.push(route) 
                 this.selected = route;
             }
+        },
+        beforeCreate(){
+            axios
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': 'b4e5b9cd972ec187589039cc81fec82a'
+                })
+                .then((r)=>{
+                    //Se o usuário estiver logado o sistema pega os dados da conta
+                    this.logged = r.data.logged;
+                    if(this.logged){
+                        this.isLogged = r.data.loggedUser;
+                    }
+
+                })
+                .finally(()=>{
+                    this.loadingHeader = false;
+                });
         }
     }
 </script>
 
 <style>
-    .teste{
+    .loading{
         color: white;
     }
     .boxMenu{
@@ -79,6 +115,7 @@
 
     .menu ul{
         display: flex;
+        align-items: center;
     }
 
     .menu .btn{
@@ -94,5 +131,16 @@
     .selected,
     .menu .btn:hover{
         border-bottom: 1px solid white !important;
+    }
+    .profileIcon{
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+    .profileIcon img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
     }
 </style>

@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <loggedoutHeader></loggedoutHeader>
+    <mainHeader></mainHeader>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import loggedoutHeader from './components/menu.vue'
+  import mainHeader from './components/menu.vue'
 
   export default {
     name: 'App',
     components: {
-      loggedoutHeader
+      mainHeader
+    },
+    data(){
+      return{
+        
+      }
     }
   }
 </script>
