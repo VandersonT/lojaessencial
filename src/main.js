@@ -20,7 +20,7 @@ const router = new VueRouter({
     {path: '/favoritos', component:favorites},
     {path: '/carrinho', component:kart},
     {path: '/perfil', component:profile},
-    {path: '/configuração', component:settings}
+    {path: '/configuracao', component:settings}
   ]
 });
 
