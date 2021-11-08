@@ -1,9 +1,10 @@
 <template>
+<div>
     <div class="boxMenu">
         <div v-on:click="changeSelected('/')" class="logo" to="/"></div>
 
         <div class="boxSearch">
-           <input type="text" v-model="search" placeholder="Busque por algum produto" />
+           <input type="text" v-model="search" placeholder="Procura algo especifico?" />
            <button><i class="fas fa-search"></i></button>
         </div>
 
@@ -31,7 +32,13 @@
 
             </div>
         </div>
+
     </div>
+    <div class="searchMobile">
+        <input type="text" v-model="search" placeholder="Procura algo especifico?" />
+        <button><i class="fas fa-search"></i></button>
+    </div>
+</div>
 </template>
 
 <script>
@@ -121,7 +128,7 @@
     .boxSearch button{
         font-size: 18px;
         border: 0;
-        padding: 2px 5px;
+        padding: 4px 8px;
         border-radius: 5px;
         cursor: pointer;
         color: rgb(27, 27, 27);
@@ -184,10 +191,37 @@
     .loading{
         color: white;
     }
+
+    .searchMobile{
+        display: none;
+        position: fixed;
+        width: 100vw;
+        max-width: 100%;
+        top: 50px;
+        left: 0;
+        background: rgb(18, 18, 20);
+        border-top: 1px solid rgb(39, 39, 39);
+        padding: 10px;
+        justify-content: center;
+    }
+    .searchMobile input{
+        padding: 5px;
+        border-radius: 5px;
+        border: 0;
+        outline: 0;
+        margin-right: 5px;
+    }
+    .searchMobile button{
+        padding: 5px 8px;
+        border-radius: 3px;
+        border: 0;
+        cursor: pointer;
+    }
     /*RESPONSIVE*/
     @media screen and (max-width: 630px){
         .boxMenu{
-            padding: 0 10px;
+            height: 50px;
+            padding: 0 15px;
         }
         .boxSearch{
             display: none;
@@ -196,11 +230,14 @@
             font-size: 14px;
         }
         .logo{
-            width: 55px;
-            height: 60%;
+            width: 60px;
+            height: 80%;
         }
         .profileIcon{
             margin-left: 0;
+        }
+        .searchMobile{
+            display: flex;
         }
     }
     
