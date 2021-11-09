@@ -56,6 +56,35 @@
             </div>
             <img src="../assets/images/promotionIcon.png" />
         </section>
+
+        <section class="userOpinions">
+            <h1 class="userOpinions--title"><i class="fas fa-user-friends"></i> Depoimentos</h1>
+            <div class="boxOpinions">
+                <div class="opinionsSingle animate__animated animate__fadeIn">
+                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <p class="opinionsSingle--message">
+                        Meu depoimento é o primeiro ihulll first
+                    </p>
+                    <p class="opinionsSingle--author">Joana Silva</p>
+                </div>
+                <div class="opinionsSingle animate__animated animate__fadeIn">
+                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <p class="opinionsSingle--message">
+                        eu comento por que comento mesmo pqoeur comento uyai
+                    </p>
+                    <p class="opinionsSingle--author">Ana Silva</p>
+                </div>
+                <div class="opinionsSingle animate__animated animate__fadeIn">
+                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <p class="opinionsSingle--message">
+                       teste
+                    </p>
+                    <p class="opinionsSingle--author">Pedro Silva</p>
+                </div>
+                <div class="controlsOpinions"></div>
+            </div>
+        </section>
+
     </div>
 </template>
 
@@ -69,7 +98,8 @@
         data(){
             return {
                 logged: false,
-                loggedUser: []
+                loggedUser: [],
+                thereIsOpinions: true
             }
         },
         beforeCreate(){
@@ -96,6 +126,61 @@
         mounted(){
             var height = window.innerHeight - 69;
             document.querySelector('.boxMainImage').style.height = height+'px';
+
+            /*userOpnions*/
+            let startIn = 1;
+            let amount = document.querySelectorAll('.opinionsSingle').length;
+
+
+            if(amount > 1){
+                controlsGeneration(amount);
+                slideStart(startIn);
+            }else{
+                let box = document.querySelector('.boxOpinions');
+                box.innerHTML = "<h1 class='empty'>NÃ£o temos nenhum depoimento disponivel no momento!</h1>";
+            }
+            
+            function slideStart(startIn){
+                let opinionsSingle = document.querySelectorAll('.opinionsSingle');
+                let opinionsControls = document.querySelectorAll('.controlsOpinions span');
+                startIn = startIn - 1;
+
+                opinionsControls[startIn].classList.add('controlsOpinions--selected');
+                opinionsSingle[startIn].style.display = 'flex';
+
+                let opinionsLoop = setInterval(function(){
+                    for(let i = 0; i < amount; i++){
+                        opinionsSingle[i].style.display = 'none';
+                        opinionsControls[i].classList.remove('controlsOpinions--selected');
+                    }
+
+                    if(startIn < amount-1){
+                        startIn++;
+                    }else{
+                        startIn = 0;
+                    }
+                    opinionsControls[startIn].classList.add('controlsOpinions--selected');
+                    opinionsSingle[startIn].style.display = 'flex';
+                }, 3000);
+
+                for(let i = 0; i < amount; i++){
+                    opinionsControls[i].addEventListener('click', function(){
+                        clearInterval(opinionsLoop);
+                        for(let i = 0; i < amount; i++){
+                            opinionsSingle[i].style.display = 'none';
+                            opinionsControls[i].classList.remove('controlsOpinions--selected');
+                        }
+                        slideStart(i+1);
+                    })
+                }
+            }
+
+            function controlsGeneration(amount){
+                for(let i = 0; i < amount; i++){
+                    let controlSingle = document.createElement("span");
+                    document.querySelector('.controlsOpinions').appendChild(controlSingle);
+                }
+            }
         }
     }
 </script>
@@ -181,6 +266,7 @@
         color:#197ABB;
         font-weight: bold;
     }
+
     /*Promotion*/
     .boxPromotion{
         width: 100vw;
@@ -210,7 +296,78 @@
         width: 250px;
         height: 110px;
     }
+    /*Depositions*/
+    .userOpinions{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 60px;
+        margin-bottom: 40px;
+    }
+    .userOpinions--title{
+        margin-top: 30px;
+        text-transform: capitalize;
+        font-weight: lighter;
+        font-size: 28px;
+        color: #383838;
+        margin-bottom: 10px;
+        font-family: Arial,tahoma,verdana;
+        border-bottom: 1px solid rgb(192, 192, 192);
+    }
+    .boxOpinions{
+        width: 100%;
+        height: 400px;
+        border:1px solid rgb(201, 201, 201);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .opinionsSingle{
+        width: max-content;
+        max-width: 50%;
+        height: 230px;
+        text-align: center;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .opinionsSingle img{
+        width: 70px;
+        height: 70px;
+        border-radius: 100px;
+        margin-bottom: 30px;
+    }
+    .opinionsSingle--message{
+       font-size: 17px;
+        margin-bottom: 30px;
+        color: #777777;
+    }
 
+    .opinionsSingle--author{
+       font-size: 18px;
+        color: #535353;
+    }
+
+    .controlsOpinions{
+        width: 60%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .controlsOpinions span{
+        padding: 6px;
+        background: rgb(233, 233, 233);
+        border: 1px solid gray;
+        border-radius: 50px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    .controlsOpinions--selected{
+        background: rgb(0, 162, 255) !important;
+    }
     /*RESPONSIVE*/
     @media screen and (max-width: 1350px){
         .mainPhrase{

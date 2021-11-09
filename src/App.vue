@@ -28,8 +28,8 @@
       box-sizing: border-box;
   }
 
-  .animate__bounceInRight{
-    animation-duration: 0.5s;
+  .animate__fadeIn{
+    animation-duration: 2s;
   }
 
   .link{
