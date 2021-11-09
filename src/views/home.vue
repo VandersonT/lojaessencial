@@ -61,28 +61,42 @@
             <h1 class="userOpinions--title"><i class="fas fa-user-friends"></i> Depoimentos</h1>
             <div class="boxOpinions">
                 <div class="opinionsSingle animate__animated animate__fadeIn">
-                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <img src="../assets/images/no-picture.png" />
                     <p class="opinionsSingle--message">
-                        Meu depoimento é o primeiro ihulll first
+                        Gostei muito do atendimento e dos produtos oferecidos, super recomendo.
                     </p>
                     <p class="opinionsSingle--author">Joana Silva</p>
                 </div>
                 <div class="opinionsSingle animate__animated animate__fadeIn">
-                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <img src="../assets/images/no-picture.png" />
                     <p class="opinionsSingle--message">
-                        eu comento por que comento mesmo pqoeur comento uyai
+                        Encontrei tudo que estava procurando, loja exelente.
                     </p>
-                    <p class="opinionsSingle--author">Ana Silva</p>
+                    <p class="opinionsSingle--author">Ana Clara</p>
                 </div>
                 <div class="opinionsSingle animate__animated animate__fadeIn">
-                    <img src="https://st2.depositphotos.com/6903990/10827/i/600/depositphotos_108277030-stock-photo-female-model-with-fashion-make.jpg" />
+                    <img src="../assets/images/no-picture.png" />
                     <p class="opinionsSingle--message">
-                       teste
+                       O atendimento foi incrivel! O pessoal sabe tratar clientes
                     </p>
-                    <p class="opinionsSingle--author">Pedro Silva</p>
+                    <p class="opinionsSingle--author">Pedro Antonio</p>
+                </div>
+                <div class="opinionsSingle animate__animated animate__fadeIn">
+                    <img src="../assets/images/no-picture.png" />
+                    <p class="opinionsSingle--message">
+                       Muito top, recomendo demais :D 
+                    </p>
+                    <p class="opinionsSingle--author">Ana Beatriz</p>
                 </div>
                 <div class="controlsOpinions"></div>
             </div>
+        </section>
+
+        <section class="stayTurned">
+            <h1><i class="fas fa-bahai"></i> Fique por dentro</h1>
+            <p>Envie seu email abaixo para nós podermos te enviar novas ofertas e novidades sobre nosso produtos.</p>
+            <input type="text" placeholder="Digite o seu email" />
+            <button>Enviar</button>
         </section>
 
     </div>
@@ -129,6 +143,7 @@
 
             /*userOpnions*/
             let startIn = 1;
+            let waitingTime = 6000;
             let amount = document.querySelectorAll('.opinionsSingle').length;
 
 
@@ -161,7 +176,7 @@
                     }
                     opinionsControls[startIn].classList.add('controlsOpinions--selected');
                     opinionsSingle[startIn].style.display = 'flex';
-                }, 3000);
+                }, waitingTime);
 
                 for(let i = 0; i < amount; i++){
                     opinionsControls[i].addEventListener('click', function(){
@@ -223,7 +238,8 @@
         text-transform: capitalize;
         font-weight: lighter;
         font-size: 28px;
-        color: #00ADEF;
+        /*color: #00ADEF;*/
+        color: #4e4e4e;
         margin-bottom: 10px;
         font-family: Arial,tahoma,verdana;
         border-bottom: 1px solid rgb(192, 192, 192);
@@ -308,7 +324,7 @@
         text-transform: capitalize;
         font-weight: lighter;
         font-size: 28px;
-        color: #383838;
+        color: #4e4e4e;
         margin-bottom: 10px;
         font-family: Arial,tahoma,verdana;
         border-bottom: 1px solid rgb(192, 192, 192);
@@ -367,6 +383,57 @@
     }
     .controlsOpinions--selected{
         background: rgb(0, 162, 255) !important;
+    }
+    /*stayTurned*/
+    .stayTurned{
+        width: 100%;
+        padding: 50px 10px 70px 10px;
+        margin: 0 auto;
+        background: rgb(18, 18, 20);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .stayTurned h1{
+        color: rgb(184, 184, 184);
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    .stayTurned p{
+        width: 500px;
+        color: rgb(184, 184, 184);
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .stayTurned input{
+        width: 400px;
+        padding: 10px;
+        font-size: 18px;
+        outline: 0;
+        border: 0;
+        color: gray;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .stayTurned button{
+        border: 0;
+        padding: 10px;
+        background: rgb(0, 110, 255);
+        border-radius: 5px;
+        text-transform: uppercase;
+        color: white;
+        font-size: 11px;
+        cursor: pointer;
+    }
+    .stayTurned button:hover{
+        background: rgb(0, 103, 238);
+        color: rgb(241, 241, 241);
     }
     /*RESPONSIVE*/
     @media screen and (max-width: 1350px){
