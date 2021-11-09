@@ -48,6 +48,14 @@
             </div>
 
         </section>
+
+        <section class="boxPromotion">
+            <div class="boxPromotion--phrase">
+                <p>Até 30% de desconto</p>
+                <p>aproveite essa oferta oferta.<i class="fab fa-google-wallet"></i></p>
+            </div>
+            <img src="../assets/images/promotionIcon.png" />
+        </section>
     </div>
 </template>
 
@@ -98,7 +106,6 @@
         max-width: 100%;
         height: 730px;
         margin-top: 70px;
-        background-color: rgb(107, 20, 20);
         background-image: url('../assets/images/mainBanner.jpg');
         background-position: center;
         background-size: cover;
@@ -174,7 +181,37 @@
         color:#197ABB;
         font-weight: bold;
     }
+    /*Promotion*/
+    .boxPromotion{
+        width: 100vw;
+        max-width: 100%;
+        height: 600px;
+        background-image: url('../assets/images/banner2Home.jpg');
+        background-position: center;
+        background-size: cover;
+        margin-bottom: 20px;
+    }
 
+    .boxPromotion--phrase{
+        width: max-content;
+        color: white;
+        font-size: 50px;
+        font-family: 'Dancing Script', cursive;
+        position: relative;
+        left: 150px;
+        top: 150px;
+        transform: rotate(-5deg);
+    }
+
+    .boxPromotion img{
+        position: relative;
+        top: 180px;
+        left: 17%;
+        width: 250px;
+        height: 110px;
+    }
+
+    /*RESPONSIVE*/
     @media screen and (max-width: 1350px){
         .mainPhrase{
             width: 350px;
