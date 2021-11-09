@@ -66,7 +66,7 @@
         },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://jsonplaceholder.typicode.com/posts',{
                     'currentToken': ''
                 })
                 .then((r)=>{
@@ -76,6 +76,13 @@
                         this.loggedUser = r.data.loggedUser;
                     }
 
+                })
+                .catch(() => {
+                    /*
+                        Se deu falha aqui, então não é possivel o usuario logar na conta dele, pois a api
+                        esta com problemas e ela é quem irá autenticar ele, mas deixe um aviso falando que
+                        não é possivel no momento logar na conta e permita que ele navegue sem conta msm.
+                    */
                 });
         },
         mounted(){
@@ -98,18 +105,21 @@
     }
 
     .mainPhrase{
-        width: 500px;
+        width: 550px;
         padding: 5px;
         position: relative;
         top: 40%;
         left: 12%;
         color: #202020;
-        font-weight: lighter;
-        font-size: 36px;
-        font-family: 'Kaushan Script', cursive;
-        text-transform:capitalize;
+        font-size: 40px;
+        font-family: 'Dancing Script', cursive;
+        text-transform: capitalize;
         transform: rotate(-5deg);
         text-align: center;
+        font-weight:500;
+    }
+    .mainPhrase i{
+        font-size: 22px;
     }
     /*Nossos Produtos*/
     .boxProducts{
@@ -123,7 +133,6 @@
         font-size: 28px;
         color: #00ADEF;
         margin-bottom: 10px;
-        font-family: 'Kaushan Script', cursive;
         font-family: Arial,tahoma,verdana;
         border-bottom: 1px solid rgb(192, 192, 192);
     }
@@ -148,6 +157,7 @@
         max-width: 100%;
         height: 165px;
         margin-bottom: 20px;
+        cursor: pointer;
     }
 
     .productDescription{
@@ -156,6 +166,7 @@
         font-size: 13px;
         font-weight: normal;
         line-height: 12px;
+        cursor: pointer;
     }
 
     .productPrice{

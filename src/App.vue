@@ -28,6 +28,15 @@
       box-sizing: border-box;
   }
 
+  .animate__bounceInRight{
+    animation-duration: 0.5s;
+  }
+
+  .link{
+      color: rgb(0, 119, 255);
+      margin-top: 10px;
+  }
+
   a{
       color: rgb(0, 0, 0);
       text-decoration: none;

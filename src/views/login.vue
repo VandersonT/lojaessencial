@@ -1,7 +1,22 @@
 <template>
     <div>
         <section class="boxLogin">
-            login
+            <form class="login">
+                <div v-show="loginError" class="flashError">
+                    Email e/ou senha estão incorretos
+                </div>
+                <h1><i class="fas fa-lock"></i>Faça Login</h1>
+                <input type="email" placeholder="Email"/>
+                <i class="fas fa-envelope iconInput"></i>
+                <input type="password" placeholder="Senha"/>
+                <i class="fas fa-lock iconInput"></i>
+                <div class="sameLine">
+                    <input type="checkbox" />
+                    <p>Manter conectado</p>
+                </div>
+                <button>Entrar</button>
+                <router-link class="link" to="/cadastro">Ainda não tem uma conta?</router-link>
+            </form>
         </section>
     </div>
 </template>
@@ -13,9 +28,14 @@
         components: {
             
         },
+        data(){
+            return{
+                loginError: false
+            }
+        },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://jsonplaceholder.typicode.com/posts',{
                     'currentToken': ''
                 })
                 .then((r)=>{
@@ -30,10 +50,103 @@
 
 <style>
     .boxLogin{
+        margin-top: 70px;
         width: 100vw;
         max-width: 100%;
         height: calc(100vh - 70px);
-        margin-top: 70px;
-        background-color: rgb(190, 190, 190);
+        display: flex;
+        justify-content: center;
+        background-image: url('../assets/images/bannerLogin.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .flashError{
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        border-radius: 5px;
+        background: rgb(199, 0, 0);
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .login{
+        width: 400px;
+        height: max-content;
+        margin-top: 200px;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        border-radius: 5px;
+    }
+
+    .login h1{
+        color: white;
+        font-family: Arial,tahoma,verdana;
+        text-transform: capitalize;
+        font-weight: lighter;
+        margin-bottom: 20px;
+    }
+
+    .login h1 i{
+        margin-right: 10px;
+        font-size: 20px;
+    }
+
+    .login input:not(input[type=checkbox]){
+        width: 100%;
+        padding: 10px;
+        font-size: 17px;
+        outline: 0;
+        border: 1px solid rgb(37, 37, 37);
+        border-radius: 5px;
+        color: gray;
+        padding-left: 38px;
+    }
+
+    .iconInput{
+        position: relative;
+        right: 150px;
+        bottom: 31px;
+        color: rgb(77, 77, 77);
+        font-size: 20px;
+    }
+
+    .sameLine{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+    .sameLine input{
+        margin-right: 5px;
+    }
+
+    .login button{
+        margin-top: 30px;
+        background: rgb(0, 119, 255);
+        outline: 0;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: white;
+    }
+
+    .login button:hover{
+        background: rgb(0, 112, 240);
+        color: rgb(236, 236, 236);
+    }
+
+    @media screen and (max-width: 630px){
+       .boxLogin{
+            margin-top: 96px;
+            height: calc(100vh - 96px);
+        }
     }
 </style>

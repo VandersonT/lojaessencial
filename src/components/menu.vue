@@ -73,7 +73,7 @@
         },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://jsonplaceholder.typicode.com/posts',{
                     'currentToken': ''
                 })
                 .then((r)=>{
@@ -86,6 +86,13 @@
                 })
                 .finally(()=>{
                     this.loadingHeader = false;
+                })
+                .catch(() => {
+                    /*
+                        Se deu falha aqui, então não é possivel o usuario logar na conta dele, pois a api
+                        esta com problemas e ela é quem irá autenticar ele, mas deixe um aviso falando que
+                        não é possivel no momento logar na conta e permita que ele navegue sem conta msm.
+                    */
                 });
         }
     }
@@ -96,6 +103,7 @@
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 2;
         width: 100vw;
         max-width: 100%;
         height: 70px;
@@ -149,7 +157,7 @@
         text-decoration: none;
     }
 
-    .selected,
+    /*.selected,*/
     .menu .btn:hover{
         border-bottom: 1px solid rgb(236, 236, 236) !important;
     }
