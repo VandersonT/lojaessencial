@@ -6,6 +6,7 @@ import home from './views/home.vue'
 import login from './views/login.vue'
 import register from './views/register.vue'
 import productWanted from './views/productWanted.vue'
+import productSingle from './views/productSingle.vue'
 import favorites from './views/favorites.vue'
 import kart from './views/kart.vue'
 import profile from './views/profile.vue'
@@ -19,6 +20,7 @@ const router = new VueRouter({
     {path: '/login', component:login},
     {path: '/cadastro', component:register},
     {path: '/produtos/:wanted', component:productWanted},
+    {path: '/produto/:id', component:productSingle},
     {path: '/favoritos', component:favorites},
     {path: '/carrinho', component:kart},
     {path: '/perfil', component:profile},

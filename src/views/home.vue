@@ -151,7 +151,7 @@
                 logged: false,
                 loggedUser: [],
                 thereIsOpinions: true,
-                userSendEmail: false
+                userSendEmail: true
             }
         },
         beforeCreate(){
