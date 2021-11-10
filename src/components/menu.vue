@@ -160,7 +160,7 @@
         text-decoration: none;
     }
 
-    /*.selected,*/
+    .selected,
     .menu .btn:hover{
         border-bottom: 1px solid rgb(236, 236, 236) !important;
     }
