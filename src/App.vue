@@ -35,6 +35,7 @@
   .link{
       color: rgb(0, 119, 255);
       margin-top: 10px;
+      cursor: pointer;
   }
 
   a{
