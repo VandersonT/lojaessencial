@@ -73,6 +73,7 @@
                             <p>Digite o seu cep:</p>
                             <input type="number" />
                             <button><i class="fas fa-search"></i></button>
+                            <p class="link">Não sei o meu cep</p>
                         </div>
                         não calculado
                     </div>

@@ -5,7 +5,7 @@
                 <div class="showProdutImages">
                     <img class="mainImage" src="../assets/images/coat.jpg" />
                     <div class="productGallery">
-                        <div class="scrollGallery" src="../assets/images/coat.jpg">
+                        <div class="scrollGallery">
                             <img class="miniImage" src="../assets/images/coat.jpg"/>
                             <img class="miniImage" src="../assets/images/coat.jpg"/>
                             <img class="miniImage" src="../assets/images/coat.jpg"/>
@@ -34,6 +34,11 @@
                         <option>GG</option>
                     </select>
 
+                    <div class="setAmount">
+                        <p>Quantidade:</p>
+                        <input type="number" value="1" placeholder="Digite a quantidade" />
+                    </div>
+
                     <div class="calcFrete">
                         <p>Calcular frete:</p>
                         <input type="number" placeholder="00000-000" />
@@ -43,21 +48,124 @@
 
                     <div>
                         <button class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
-                         <button class="buttonModel1 btnBlue">Adicionar ao carrinho</button>
+                        <button class="buttonModel1 btnBlue">Adicionar ao carrinho</button>
                     </div>
                     
                 </div>
             </div>
             <div class="infoProduct">
-                
+                <h1 class="title">Informações do produto:</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
+                </p>
             </div>
+
             <div class="productComments">
-                
+                <h1 class="title">Avaliações dos clientes:</h1>
+
+                <div class="boxCommentsSingle">
+                    
+                    <div class="commentSingle">
+                        <div class="infoComment">
+                            <h1>Ananda Silva</h1>
+                            <p>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </p>
+                        </div>
+                        <p class="userMessage">Eu comprei na segunda e chegou na sexta feita, gostei do antendimento, comprarei novamente sem duvidas.</p>
+                    </div>
+
+                    <div class="commentSingle">
+                        <div class="infoComment">
+                            <h1>Pedro Augusto</h1>
+                            <p>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </p>
+                        </div>
+                        <p class="userMessage">Gostei muito do produto e chegou muito rapido, gostei totalmente :D</p>
+                    </div>
+
+                    <div class="commentSingle">
+                        <div class="infoComment">
+                            <h1>José Pimenta</h1>
+                            <p>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star"></i>
+                            </p>
+                        </div>
+                        <p class="userMessage">Atendente super tranquila, gostei muito e compraria denovo sem nem pensar.</p>
+                    </div>
+
+                </div>
+
             </div>
+
             <div class="similarProduct">
-                
+                 <h1 class="title">Produtos Similares:</h1>
+                 <div class="boxSimilarProduct">
+                    <div class="scrollGallery">
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                    </div>
+                 </div>
             </div>
         </section>
+
+        <footer>
+            <h1>Nos Contate</h1>
+            <div class="boxInfo">
+                <div class="contacts">
+                    <h2>Contatos</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Essecial,praça zeferino, 162, centro, são joão</p>
+                    <p><i class="fas fa-envelope"></i> lojaessencial@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +55 (33)8861-7281</p>
+                    <a href=""><p><i class="fab fa-instagram"></i> Essencial.mv2</p></a>
+                    <a href=""><p><i class="fab fa-facebook-f"></i> Essencial.mv2</p></a>
+                </div>
+                <div class="businessHours">
+                    <h2>Funcionamento</h2>
+                    <p>Segunda a Sexta</p>
+                    <p>08:00 16:00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                Copyright 2021 Essencial - Todos os direitos reservados
+            </div>
+        </footer>
+
     </div>
 </template>
 
@@ -71,7 +179,9 @@
 
 <style>
     .boxProdutSingle{
-        margin-top: 70px;
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 75px;
     }
 
     .showProdut{
@@ -126,8 +236,9 @@
 
     .showProdutInfo{
         width: calc(100% - 460px);
-        border-bottom: 1px solid rgb(179, 179, 179);
         padding-left: 20px;
+        border: 1px solid rgb(179, 179, 179);
+        border-left: 0;
     }
 
     .showProdutInfo h1{
@@ -157,10 +268,12 @@
         margin-bottom: 20px;
     }
 
+    .setAmount,
     .calcFrete{
         margin: 20px 0;
     }
     
+    .setAmount input[type=number],
     .calcFrete input[type=number]{
         outline: 0;
         border: 1px solid rgb(168, 168, 168);
@@ -204,4 +317,78 @@
         background: rgb(44, 44, 43);
     }
 
+    /*Info product*/
+    .infoProduct{
+        margin: 0 auto;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .title{
+        text-transform: capitalize;
+        font-weight: lighter;
+        font-size: 28px;
+        color: #4e4e4e;
+        margin-bottom: 20px;
+        font-family: Arial,tahoma,verdana;
+        border-bottom: 1px solid rgb(192, 192, 192);
+    }
+
+    .infoProduct p{
+        width: 90%;
+        color: #777777;
+        font-size: 17px;
+    }
+
+    /*Product Comments*/
+    .boxCommentsSingle{
+        margin-bottom: 30px;
+    }
+    .commentSingle{
+        border: 1px solid rgb(192, 192, 192);
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .infoComment{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .infoComment h1{
+        margin-right: 10px;
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        font-size: 18px;
+        color: #0084ff;
+    }
+
+    .infoComment i{
+       color: rgb(44, 44, 44);
+    }
+
+    .star{
+        color: rgb(218, 181, 16) !important;
+    }
+
+    .userMessage{
+        width: 800px;
+        margin-bottom: 10px;
+        color: #777777;
+        font-size: 17px;
+    }
+
+    /*Similar Product*/
+    .boxSimilarProduct{
+        width: 100%;
+        border: 1px solid rgb(192, 192, 192);
+        margin-bottom: 50px;
+        overflow-x: auto;
+    }
+    .similarProductImage{
+        width: 200px;
+        height: 180px;
+        background: rgb(71, 71, 71);
+        border-right: 1px solid rgb(143, 143, 143);
+    }
 </style>
