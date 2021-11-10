@@ -262,7 +262,6 @@
         text-transform: capitalize;
         font-weight: lighter;
         font-size: 28px;
-        /*color: #00ADEF;*/
         color: #4e4e4e;
         margin-bottom: 10px;
         font-family: Arial,tahoma,verdana;
