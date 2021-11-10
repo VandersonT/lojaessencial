@@ -15,38 +15,55 @@
                     <h3>Produto:</h3>
                     <div class="filterSingle">
                         <div>
-                            <input type="radio" name="productFilter" />
-                            Todos
+                            <input type="checkbox" checked />
+                            Calças
                         </div>
                         <div>
-                            <input type="radio" name="productFilter" />
-                            Calça
+                            <input type="checkbox" checked/>
+                            Sapatos
                         </div>
                         <div>
-                            <input type="radio" name="productFilter" />
-                            Sapato
-                        </div>
-                        <div>
-                            <input type="radio" name="productFilter" />
+                            <input type="checkbox" checked/>
                             Blusas
+                        </div>
+                        <div>
+                            <input type="checkbox" checked/>
+                            Camisas
                         </div>
                     </div>
 
                     <h3>Genero:</h3>
                     <div class="filterSingle">
                         <div>
-                            <input type="radio" name="productFilter" />
+                            <input type="radio" name="genderFilter" checked />
+                            Unissex
+                        </div>
+                        <div>
+                            <input type="radio" name="genderFilter" />
                             Masculino
                         </div>
                         <div>
-                            <input type="radio" name="productFilter" />
+                            <input type="radio" name="genderFilter" />
                             Feminino
                         </div>
+                    </div>
+
+                    <h3>Para:</h3>
+                    <div class="filterSingle">
                         <div>
-                            <input type="radio" name="productFilter" />
-                            Unissex
+                            <input type="checkbox" checked />
+                            Bebês
+                        </div>
+                        <div>
+                            <input type="checkbox" checked />
+                            Crianças
+                        </div>
+                        <div>
+                            <input type="checkbox" checked />
+                            Adultos
                         </div>
                     </div>
+
                 </div>
 
                 <button>Filtrar</button>
