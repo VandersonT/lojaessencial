@@ -93,11 +93,31 @@
         </section>
 
         <section class="stayTurned">
-            <h1><i class="fas fa-bahai"></i> Fique por dentro</h1>
+            <h1><i class="fas fa-bahai"></i> Fique Atualizado</h1>
             <p>Envie seu email abaixo para nós podermos te enviar novas ofertas e novidades sobre nosso produtos.</p>
             <input type="text" placeholder="Digite o seu email" />
+            <p v-if="userSendEmail" class="successStayTurned animate__animated animate__rubberBand">Seu email foi cadastrado com sucesso <i class="far fa-smile-wink"></i></p>
             <button>Enviar</button>
         </section>
+
+        <footer>
+            <h1>Nos Contate</h1>
+            <div class="boxInfo">
+                <div class="contacts">
+                    <h2>Contatos</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Essecial,praça zeferino, 162, centro, são joão</p>
+                    <p><i class="fas fa-envelope"></i> lojaessencial@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +55 (33)8861-7281</p>
+                    <a href=""><p><i class="fab fa-instagram"></i> Essencial.mv2</p></a>
+                    <a href=""><p><i class="fab fa-facebook-f"></i> Essencial.mv2</p></a>
+                </div>
+                <div class="businessHours">
+                    <h2>Funcionamento</h2>
+                    <p>Segunda a Sexta</p>
+                    <p>08:00 16:00</p>
+                </div>
+            </div>
+        </footer>
 
     </div>
 </template>
@@ -113,7 +133,8 @@
             return {
                 logged: false,
                 loggedUser: [],
-                thereIsOpinions: true
+                thereIsOpinions: true,
+                userSendEmail: false
             }
         },
         beforeCreate(){
@@ -389,14 +410,13 @@
         width: 100%;
         padding: 50px 10px 70px 10px;
         margin: 0 auto;
-        background: rgb(18, 18, 20);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     .stayTurned h1{
-        color: rgb(184, 184, 184);
+        color: rgb(32, 32, 32);
         font-family: Arial,tahoma,verdana;
         font-weight: lighter;
         margin-bottom: 20px;
@@ -404,7 +424,7 @@
     }
     .stayTurned p{
         width: 500px;
-        color: rgb(184, 184, 184);
+        color: #777777;
         font-family: Arial,tahoma,verdana;
         font-weight: lighter;
         margin-bottom: 20px;
@@ -416,7 +436,7 @@
         padding: 10px;
         font-size: 18px;
         outline: 0;
-        border: 0;
+        border: 1px solid rgb(141, 141, 141);
         color: gray;
         border-radius: 5px;
         margin-bottom: 10px;
@@ -434,6 +454,44 @@
     .stayTurned button:hover{
         background: rgb(0, 103, 238);
         color: rgb(241, 241, 241);
+    }
+    .successStayTurned{
+        color: rgb(0, 212, 0) !important;
+    }
+    /*Footer*/
+    footer{
+        background: rgb(13, 13, 14);
+        border-top: 1px solid rgb(18, 18, 20);
+        padding: 40px;
+        color: rgb(184, 184, 184);
+    }
+    footer h1{
+        text-align: center;
+        color: rgb(184, 184, 184);
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        margin-bottom: 20px;
+    }
+    .boxInfo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .businessHours h2,
+    .contacts h2{
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        margin-bottom: 20px;
+    }
+
+    .contacts p,
+    .businessHours p{
+        margin-bottom: 10px;
+        color: rgb(184, 184, 184);
+    }
+    .contacts{
+        margin-right: 70px;
     }
     /*RESPONSIVE*/
     @media screen and (max-width: 1350px){
