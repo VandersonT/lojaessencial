@@ -5,7 +5,7 @@
 
         <div class="boxSearch">
            <input type="text" v-model="search" placeholder="Procura algo especifico?" />
-           <button><i class="fas fa-search"></i></button>
+           <router-link :to="(search) ? '/produtos/'+search : ''" class="boxSearch--button"><i class="fas fa-search"></i></router-link>
         </div>
 
         <div class="menut">
@@ -133,13 +133,16 @@
         color: rgb(105, 105, 105);
     }
 
-    .boxSearch button{
+    .boxSearch--button{
+        position: relative;
+        top: 1px;
         font-size: 18px;
         border: 0;
         padding: 4px 8px;
         border-radius: 5px;
         cursor: pointer;
         color: rgb(27, 27, 27);
+        background: white;
     }
 
     .menu ul{
