@@ -52,7 +52,7 @@
         <section class="boxPromotion">
             <div class="boxPromotion--phrase">
                 <p>Até 30% de desconto</p>
-                <p>aproveite essa oferta oferta.<i class="fab fa-google-wallet"></i></p>
+                <p>aproveite essa oferta.<i class="fab fa-google-wallet"></i></p>
             </div>
             <img src="../assets/images/promotionIcon.png" />
         </section>
@@ -116,6 +116,9 @@
                     <p>Segunda a Sexta</p>
                     <p>08:00 16:00</p>
                 </div>
+            </div>
+            <div class="copyright">
+                Copyright 2021 Essencial - Todos os direitos reservados
             </div>
         </footer>
 
@@ -462,10 +465,10 @@
     footer{
         background: rgb(13, 13, 14);
         border-top: 1px solid rgb(18, 18, 20);
-        padding: 40px;
         color: rgb(184, 184, 184);
     }
     footer h1{
+        margin-top: 40px;
         text-align: center;
         color: rgb(184, 184, 184);
         font-family: Arial,tahoma,verdana;
@@ -492,6 +495,12 @@
     }
     .contacts{
         margin-right: 70px;
+    }
+    .copyright{
+        border-top: 1px solid rgb(24, 24, 24);
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
     }
     /*RESPONSIVE*/
     @media screen and (max-width: 1350px){
