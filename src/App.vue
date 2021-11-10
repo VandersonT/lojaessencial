@@ -68,4 +68,25 @@
       border-radius: 5px;
   }
   /*------------------------------------------*/
+
+  .icon{
+      border: 0;
+      margin-top: 10px;
+      padding: 8px 5px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      color: #272727;
+      font-size: 20px;
+      background: white;
+      margin-right: 15px;
+      cursor: pointer;
+  }
+
+  .delete{
+      color: rgb(75, 18, 18);
+  }
+  .save{
+    color: rgb(75, 18, 18);
+    font-size: 22px;
+  }
 </style>

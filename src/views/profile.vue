@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="boxContent">
+        <section class="boxProfile">
             Perfil
         </section>
     </div>
@@ -15,5 +15,7 @@
 </script>
 
 <style>
-
+    .boxProfile{
+        margin-top: 70px;
+    }
 </style>

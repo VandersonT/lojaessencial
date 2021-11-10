@@ -52,7 +52,7 @@
             return {
                 search: '',
                 selected: '/'+currentPage,
-                isLogged: false,
+                isLogged: true,
                 loadingHeader: true,
                 menuSlideIsOpen: false
             }
