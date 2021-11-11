@@ -35,13 +35,13 @@
         },
         beforeCreate(){
             axios
-                .post('https://jsonplaceholder.typicode.com/posts',{
-                    'currentToken': ''
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
                     //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
                     if(r.data.logged){
-                        location.href = document.referrer;
+                        this.$router.push('/')
                     }
                 });
         }

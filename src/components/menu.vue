@@ -52,7 +52,7 @@
             return {
                 search: '',
                 selected: '/'+currentPage,
-                isLogged: true,
+                isLogged: false,
                 loadingHeader: true,
                 menuSlideIsOpen: false
             }
@@ -73,8 +73,8 @@
         },
         beforeCreate(){
             axios
-                .post('https://jsonplaceholder.typicode.com/posts',{
-                    'currentToken': ''
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
                     //Se o usuário estiver logado o sistema pega os dados da conta

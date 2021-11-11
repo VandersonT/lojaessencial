@@ -1,26 +1,26 @@
 <template>
     <div>
         <section class="boxRegister">
-            <form class="register">
+            <div class="register">
                 <div v-show="registerError" class="flashError animate__animated animate__bounceIn">
-                    Email e/ou senha estão incorretos
+                    {{errorMessage}}
                 </div>
                 <h1><i class="fas fa-user-tag"></i>Cadastre-se</h1>
-                <input type="text" placeholder="Nome"/>
+                <input type="text" placeholder="Nome" v-model="name"/>
                 <i class="fas fa-user iconInput"></i>
-                <input type="email" placeholder="Email"/>
+                <input type="email" placeholder="Email" v-model="email"/>
                 <i class="fas fa-envelope iconInput"></i>
-                <input :type="(show) ? 'text' : 'password'" placeholder="Senha"/>
+                <input :type="(show) ? 'text' : 'password'" placeholder="Senha" v-model="password"/>
                 <i class="fas fa-lock iconInput"></i>
-                <input :type="(show) ? 'text' : 'password'" placeholder="Confirme a senha"/>
+                <input :type="(show) ? 'text' : 'password'" placeholder="Confirme a senha" v-model="confirmPassword"/>
                 <i class="fas fa-lock iconInput"></i>
                 <div class="sameLine">
                     <input type="checkbox" v-on:click="showPassword()" />
                     <p>Mostrar senha</p>
                 </div>
-                <button>Registrar</button>
+                <button v-on:click="createAccount()">Registrar</button>
                 <router-link class="link" to="/login">Já possuo uma conta</router-link>
-            </form>
+            </div>
         </section>
     </div>
 </template>
@@ -35,23 +35,73 @@
         data(){
             return {
                 show: false,
-                registerError: false
+                registerError: false,
+                errorMessage: '',
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
             }
         },
         methods:{
             showPassword: function(){
                 this.show = !this.show;
+            },
+            createAccount: function(){
+                //filtra campos vazios
+                if(!this.name || !this.email || !this.password || !this.confirmPassword){
+                    this.registerError = true;
+                    this.errorMessage = 'Não envie campos vazios';
+                    return false;
+                }
+
+                //Verifica se as senhas batem
+                if(this.password != this.confirmPassword){
+                    this.registerError = true;
+                    this.errorMessage = 'A senha e a confirmação estão diferentes.';
+                    return false;
+                }
+
+                //valida o email enviado
+                var usuario = this.email.substring(0, this.email.indexOf("@"));
+                var dominio = this.email.substring(this.email.indexOf("@")+ 1, this.email.length);
+
+                if (!((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1) && (dominio.lastIndexOf(".") < dominio.length - 1))){
+                    this.registerError = true;
+                    this.errorMessage = 'Digite um email valido para podermos prosseguir.';
+                    return false
+                }
+
+                //Envia as informações para o back-end
+                axios
+                .post('http://127.0.0.1:8000/api/users',{
+                    'name': this.name,
+                    'email': this.email,
+                    'password': this.password,
+                    'confirmPassword': this.confirmPassword,
+                })
+                .then((r)=>{
+                    //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
+                    if(r.data.error){
+                        this.registerError = true;
+                        this.errorMessage = r.data.error;
+                    }else{
+                        localStorage.setItem('token', r.data.token);
+                        location.href = document.referrer;
+                    }
+                });
+
             }
         },
         beforeCreate(){
             axios
-                .post('https://jsonplaceholder.typicode.com/posts',{
-                    'currentToken': ''
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
                     //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
                     if(r.data.logged){
-                        location.href = document.referrer;
+                        this.$router.push('/')
                     }
                 });
         }
