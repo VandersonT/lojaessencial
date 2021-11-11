@@ -1,22 +1,22 @@
 <template>
     <div>
         <section class="boxLogin">
-            <form class="login">
+            <div class="login">
                 <div v-show="loginError" class="flashError">
                     Email e/ou senha estão incorretos
                 </div>
                 <h1><i class="fas fa-lock"></i>Faça Login</h1>
-                <input type="email" placeholder="Email"/>
+                <input type="email" placeholder="Email" v-model="email"/>
                 <i class="fas fa-envelope iconInput"></i>
-                <input type="password" placeholder="Senha"/>
+                <input type="password" placeholder="Senha" v-model="password"/>
                 <i class="fas fa-lock iconInput"></i>
                 <div class="sameLine">
                     <input type="checkbox" />
                     <p>Manter conectado</p>
                 </div>
-                <button>Entrar</button>
+                <button v-on:click="login()">Entrar</button>
                 <router-link class="link" to="/cadastro">Ainda não tem uma conta?</router-link>
-            </form>
+            </div>
         </section>
     </div>
 </template>
@@ -30,7 +30,46 @@
         },
         data(){
             return{
-                loginError: false
+                loginError: false,
+                errorMessage: '',
+                email: '',
+                password: ''
+            }
+        },
+        methods:{
+            login: function(){
+                if(this.email == '' && this.password == '' ){
+                    this.loginError = true;
+                    this.errorMessage = 'Não envie campos vazios';
+                    return false;
+                }
+
+                //valida o email enviado
+                var usuario = this.email.substring(0, this.email.indexOf("@"));
+                var dominio = this.email.substring(this.email.indexOf("@")+ 1, this.email.length);
+
+                if (!((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1) && (dominio.lastIndexOf(".") < dominio.length - 1))){
+                    this.loginError = true;
+                    this.errorMessage = 'Digite um email valido para podermos prosseguir.';
+                    return false;
+                }
+
+                axios
+                    .post('http://127.0.0.1:8000/api/usersLogin',{
+                        'email': this.email,
+                        'password': this.password
+                    })
+                    .then((r)=>{
+                        //Se estiver logado é redirecionado ao menu principal pois já não precisa logar
+                        if(r.data.error){
+                            this.loginError = true;
+                            this.errorMessage = r.data.error;
+                        }else{
+                            localStorage.setItem('token', r.data.token);
+                            location.href = document.referrer;
+                        }
+                    });
+
             }
         },
         beforeCreate(){

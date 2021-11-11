@@ -25,7 +25,7 @@
                     <div class="menuSlide">
                         <router-link to="/perfil" class="btnMenuSlide">Seu perfil</router-link>
                         <router-link to="/configuração" class="btnMenuSlide">Configuração</router-link>
-                        <router-link to="/sair" class="btnMenuSlide">Sair</router-link>
+                        <p v-on:click="logout()" class="btnMenuSlide">Sair</p>
                     </div>
                 </ul>
                 <p class="loading" v-show="loadingHeader">Carregando...</p>
@@ -69,6 +69,16 @@
                     document.querySelector('.menuSlide').style.display = 'flex';
                 }
                 this.menuSlideIsOpen = !this.menuSlideIsOpen;
+            },
+            logout: function(){
+
+                if(!confirm('você quer realmente sair?')){
+                    return false;
+                }
+
+                localStorage.removeItem('token');
+                this.$router.push('/login');
+                location.reload();
             }
         },
         beforeCreate(){
@@ -195,6 +205,7 @@
         color: rgb(255, 255, 255);
         text-decoration: none;
         border-bottom: 1px solid rgb(105, 105, 105);
+        cursor: pointer;
     }
     .menuSlide .btnMenuSlide:hover{
         background: rgb(0, 134, 211);
