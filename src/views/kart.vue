@@ -68,7 +68,7 @@
             <div class="kartInfo">
                 <h1>Informações:</h1>
                 <div class="boxKartInfo">
-                    <div class="infoKartSingle">
+                    <!--<div class="infoKartSingle">
                         <div class="getCep">
                             <p>Digite o seu cep:</p>
                             <input type="number" />
@@ -76,7 +76,7 @@
                             <p class="link">Não sei o meu cep</p>
                         </div>
                         não calculado
-                    </div>
+                    </div>-->
                     <div class="infoKartSingle">
                         <h3>Total</h3>
                         <p>R$ 999,999</p>
