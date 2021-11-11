@@ -59,8 +59,12 @@
         },
         methods:{
             changeSelected: function(route){
-                this.$router.push(route) 
-                this.selected = route;
+
+                if(route != this.selected){
+                    this.$router.push(route) 
+                    this.selected = route;
+                }
+
             },
             openMenuSlide: function(){
                 if(this.menuSlideIsOpen){
