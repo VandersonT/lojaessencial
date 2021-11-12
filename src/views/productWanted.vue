@@ -82,7 +82,7 @@
 
             </div>
             <div class="boxResults">
-                <h1>Resultado para {{search}}:</h1>
+                <h1>Resultados para {{search}}:</h1>
                 <div class="showCase">
                     <div v-show="products.length > 0 && !loading" v-for="product in products" v-bind:key="product.id" class="productSingle">
                         <img :src="product.cover" />
@@ -127,6 +127,10 @@
                 var url = window.location.href;
                 url = url.split('?search=');
                 this.search = url[1];
+
+                if(this.search != undefined){
+                    this.search = this.search.replace("%20", " ");
+                }
 
                 axios
                     .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search)

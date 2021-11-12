@@ -49,6 +49,10 @@
     var url = window.location.href;
     url = url.split('?search=');
     var urlParam = url[1];
+    
+    if(urlParam != undefined){
+        urlParam = urlParam.replace("%20", " ");
+    }
 
     export default {
         name: 'loggedoutHeader',
