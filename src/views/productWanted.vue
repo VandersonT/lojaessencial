@@ -133,7 +133,7 @@
                 }
 
                 axios
-                    .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search+'&order='+this.priceOrder+'&p1='+this.productToSearch[0]+'&p2='+this.productToSearch[1]+'&p3='+this.productToSearch[2]+'&p4='+this.productToSearch[3]+'&p5='+this.productToSearch[4])
+                    .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search+'&order='+this.priceOrder+'&p1='+this.productToSearch[0]+'&p2='+this.productToSearch[1]+'&p3='+this.productToSearch[2]+'&p4='+this.productToSearch[3]+'&p5='+this.productToSearch[4]+'&gender='+this.gender)
                     .then((r)=>{
                         this.products = r.data.products;
                     })
@@ -143,10 +143,9 @@
             },
             filterProduct: function(){
                 axios
-                    .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search+'&order='+this.priceOrder+'&p1='+this.productToSearch[0]+'&p2='+this.productToSearch[1]+'&p3='+this.productToSearch[2]+'&p4='+this.productToSearch[3]+'&p5='+this.productToSearch[4])
+                    .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search+'&order='+this.priceOrder+'&p1='+this.productToSearch[0]+'&p2='+this.productToSearch[1]+'&p3='+this.productToSearch[2]+'&p4='+this.productToSearch[3]+'&p5='+this.productToSearch[4]+'&gender='+this.gender)
                     .then((r)=>{
                         this.products = r.data.products;
-                        console.log(r.data)
                     })
                     .finally(()=>{
                         this.loading = false;
