@@ -93,6 +93,8 @@
                 if(this.search == search){
                     return false;
                 }
+                
+                this.changeSelected('');
 
                 this.$router.push('/produtos?search='+this.search);
                 location.reload();
