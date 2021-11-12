@@ -19,7 +19,7 @@ const router = new VueRouter({
     {path: '/', component:home},
     {path: '/login', component:login},
     {path: '/cadastro', component:register},
-    {path: '/produtos/:wanted', component:productWanted},
+    {path: '/produtos', component:productWanted},
     {path: '/produto/:id', component:productSingle},
     {path: '/favoritos', component:favorites},
     {path: '/carrinho', component:kart},

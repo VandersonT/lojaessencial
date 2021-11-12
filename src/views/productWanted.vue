@@ -6,7 +6,7 @@
                 
                 <div class="priceFilter">
                     <h3>Preço:</h3>
-                    <select>
+                    <select v-model="priceOrder">
                         <option>Todos</option>
                         <option>Menor preço</option>
                         <option>Maior preço</option>
@@ -15,35 +15,43 @@
                     <h3>Produto:</h3>
                     <div class="filterSingle">
                         <div>
-                            <input type="checkbox" checked />
+                            <input v-model="productToSearch" type="checkbox" checked value="calças"/>
                             Calças
                         </div>
                         <div>
-                            <input type="checkbox" checked/>
+                            <input v-model="productToSearch" type="checkbox" checked value="sapatos"/>
                             Sapatos
                         </div>
                         <div>
-                            <input type="checkbox" checked/>
+                            <input v-model="productToSearch" type="checkbox" checked value="blusas"/>
                             Blusas
                         </div>
                         <div>
-                            <input type="checkbox" checked/>
+                            <input v-model="productToSearch" type="checkbox" checked value="camisas"/>
                             Camisas
+                        </div>
+                        <div>
+                            <input v-model="productToSearch" type="checkbox" checked value="jaquetas"/>
+                            Jaquetas
                         </div>
                     </div>
 
                     <h3>Genero:</h3>
                     <div class="filterSingle">
                         <div>
-                            <input type="radio" name="genderFilter" checked />
+                            <input type="radio" v-model="gender" value="todos" name="genderFilter" checked />
+                            Todos
+                        </div>
+                        <div>
+                            <input type="radio" v-model="gender" value="unissex" name="genderFilter" />
                             Unissex
                         </div>
                         <div>
-                            <input type="radio" name="genderFilter" />
+                            <input type="radio" v-model="gender" value="masculino" name="genderFilter" />
                             Masculino
                         </div>
                         <div>
-                            <input type="radio" name="genderFilter" />
+                            <input type="radio" v-model="gender" value="feminino" name="genderFilter" />
                             Feminino
                         </div>
                     </div>
@@ -51,62 +59,44 @@
                     <h3>Para:</h3>
                     <div class="filterSingle">
                         <div>
-                            <input type="checkbox" checked />
+                            <input v-model="ageToSearch" value="bebês" type="checkbox" checked />
                             Bebês
                         </div>
                         <div>
-                            <input type="checkbox" checked />
+                            <input v-model="ageToSearch" value="crianças" type="checkbox" checked />
                             Crianças
                         </div>
                         <div>
-                            <input type="checkbox" checked />
+                            <input v-model="ageToSearch" value="adolecentes" type="checkbox" checked />
+                            Adolecente
+                        </div>
+                        <div>
+                            <input v-model="ageToSearch" value="adultos" type="checkbox" checked />
                             Adultos
                         </div>
                     </div>
 
                 </div>
 
-                <button>Filtrar</button>
+                <button v-on:click="filter()">Filtrar</button>
 
             </div>
             <div class="boxResults">
-                <h1>Resultado para {{$route.params.wanted}}:</h1>
+                <h1>Resultado para {{search}}:</h1>
                 <div class="showCase">
-                    <div class="productSingle">
-                        <img src="https://images.tcdn.com.br/img/img_prod/482949/blusa_feminina_minuty_country_bordada_275_2764_1_20210809100307.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
+                    <div v-show="products.length > 0 && !loading" v-for="product in products" v-bind:key="product.id" class="productSingle">
+                        <img :src="product.cover" />
+                        <p class="productDescription">{{product.name}}</p>
+                        <p class="productPrice">R$ {{product.price}}</p>
+                        <button class="icon save"><i class="fas fa-heart"></i></button>
+                        <button class="icon"><i class="fas fa-shopping-cart"></i></button>
                     </div>
-                    <div class="productSingle">
-                        <img src="https://images.tcdn.com.br/img/img_prod/482949/blusa_feminina_minuty_country_suede_291_2778_1_20210809101902.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
-                    <div class="productSingle">
-                        <img src="http://2.bp.blogspot.com/-ikgwp4F21S4/Ue8bTIXrw-I/AAAAAAAAAt0/Bsu-z3sDLvE/s1600/Blusa_de_Manga_L_4f146ae67a4b9.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
-                    <div class="productSingle">
-                        <img src="https://institucional.lojasleader.com.br/wp-content/uploads/2019/11/BLUSA-CROPPED-ESTAMPA-JOIAS-5999.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
-                    <div class="productSingle">
-                        <img src="https://www.gsuplementos.com.br/upload/produto/imagem/b_cal-a-jogger-growth-manuscrito.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
-                    <div class="productSingle">
-                        <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/04/Imagem-de-Sapato-em-PNG-1280x720.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
-                    <div class="productSingle">
-                        <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/04/Rel%C3%B3gio-Sony-PNG.png" />
-                        <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                        <p class="productPrice">R$ 999,00</p>
-                    </div>
+
+                    <p v-show="products.length < 1 && !loading" class="empty">
+                        Não temos nenhum produto com esse filtro <i class="far fa-frown"></i>
+                    </p>
+
+                    <p v-show="loading" class="loadingProducts">Carregando produtos...</p>
                 </div>
             </div>
         </section>
@@ -114,29 +104,62 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         components: {
             
         },
         data(){
             return{
-                
+                products: [],
+                loading: true,
+                //datas to filter
+                search: '',
+                priceOrder: 'Todos',
+                productToSearch: ['calças', 'sapatos', 'blusas', 'camisas', 'jaquetas'],
+                gender: 'todos',
+                ageToSearch: ['bebês', 'crianças', 'adolecentes', 'adultos']
             }
+        },
+        methods:{
+            filter: function(){
+                var url = window.location.href;
+                url = url.split('?search=');
+                this.search = url[1];
+
+                axios
+                    .get('http://127.0.0.1:8000/api/filteredClothes?search='+this.search)
+                    .then((r)=>{
+                        this.products = r.data.products;
+                    })
+                    .finally(()=>{
+                        this.loading = false;
+                    });
+            }
+        },
+        beforeMount(){
+            this.filter();
         }
     }
 </script>
 
 <style>
+    .loadingProducts{
+        margin-top: 65px;
+        color: #777777;
+    }
     .boxProductsWanted{
         margin-top: 70px;
         display: flex;
     }
     .boxFilter{
         width: 350px;
-        height: calc(100vh - 70px);
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 20px;
         border-right: 1px solid rgb(189, 189, 189);
         border-bottom: 1px solid rgb(189, 189, 189);
     }

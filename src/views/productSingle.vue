@@ -3,7 +3,7 @@
         <section class="boxProdutSingle">
             <div class="showProdut">
                 <div class="showProdutImages">
-                    <img class="mainImage" src="../assets/images/coat.jpg" />
+                    <img class="mainImage" src="http://127.0.0.1:8000/storage/x6YiD8IVoU5jvRcQQ5IqC2i1uR6uFosVApQxPqQ0.jpg" />
                     <div class="productGallery">
                         <div class="scrollGallery">
                             <img class="miniImage" src="../assets/images/coat.jpg"/>

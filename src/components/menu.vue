@@ -5,7 +5,7 @@
 
         <div class="boxSearch">
            <input type="text" v-model="search" placeholder="Procura algo especifico?" />
-           <router-link :to="(search) ? '/produtos/'+search : ''" class="boxSearch--button"><i class="fas fa-search"></i></router-link>
+           <button v-on:click="searchProduct()" class="boxSearch--button"><i class="fas fa-search"></i></button>
         </div>
 
         <div class="menut">
@@ -45,12 +45,16 @@
     import axios from 'axios'
     
     var currentPage = window.location.href.split('/')[4];
+    
+    var url = window.location.href;
+    url = url.split('?search=');
+    var urlParam = url[1];
 
     export default {
         name: 'loggedoutHeader',
         data(){
             return {
-                search: '',
+                search: urlParam,
                 selected: '/'+currentPage,
                 isLogged: false,
                 loadingHeader: true,
@@ -73,6 +77,21 @@
                     document.querySelector('.menuSlide').style.display = 'flex';
                 }
                 this.menuSlideIsOpen = !this.menuSlideIsOpen;
+            },
+            searchProduct: function(){
+                if(this.search == ''){
+                    return false;
+                }
+                var url = window.location.href;
+                url = url.split('?search=');
+                var search = url[1];
+
+                if(this.search == search){
+                    return false;
+                }
+
+                this.$router.push('/produtos?search='+this.search);
+                location.reload();
             },
             logout: function(){
 
