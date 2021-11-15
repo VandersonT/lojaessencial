@@ -61,46 +61,14 @@
 
                 <div class="boxCommentsSingle">
                     
-                    <div class="commentSingle">
+                    <div class="commentSingle" v-for="comment in comments" v-bind:key="comment.id">
                         <div class="infoComment">
-                            <h1>Ananda Silva</h1>
-                            <p>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                            <h1>{{comment.name}}</h1>
+                            <p class="boxRate">
+                                <i v-for="index in comment.rate" :key="index" class="fas fa-star star"></i>
                             </p>
                         </div>
                         <p class="userMessage">Eu comprei na segunda e chegou na sexta feita, gostei do antendimento, comprarei novamente sem duvidas.</p>
-                    </div>
-
-                    <div class="commentSingle">
-                        <div class="infoComment">
-                            <h1>Pedro Augusto</h1>
-                            <p>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </p>
-                        </div>
-                        <p class="userMessage">Gostei muito do produto e chegou muito rapido, gostei totalmente :D</p>
-                    </div>
-
-                    <div class="commentSingle">
-                        <div class="infoComment">
-                            <h1>José Pimenta</h1>
-                            <p>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star"></i>
-                            </p>
-                        </div>
-                        <p class="userMessage">Atendente super tranquila, gostei muito e compraria denovo sem nem pensar.</p>
                     </div>
 
                 </div>
@@ -157,7 +125,9 @@
                 currentImage: '',
                 amount: 1,
                 amountBackup: 1,
-                moreProducts: []
+                moreProducts: [],
+                comments: [],
+                commentRate: []
             }
         },
         methods:{
@@ -190,6 +160,7 @@
                 .then((r)=>{
                     this.product = r.data.product;
                     this.productImages = r.data.images;
+                    this.comments = r.data.comments;
 
                     this.currentImage = this.product.cover;
 
