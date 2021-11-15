@@ -3,64 +3,81 @@
         <section class="boxFavorites">
             <h1><i class="far fa-heart"></i> Favoritos</h1>
             <div class="showCase">
-                <div class="productSingle">
-                    <img src="https://images.tcdn.com.br/img/img_prod/482949/blusa_feminina_minuty_country_bordada_275_2764_1_20210809100307.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
+                <div v-show="product.length > 0 && !loading" v-for="(info, index) in product" v-bind:key="info.id" class="productSingle">
+                    <img v-on:click="openProdcut(info.productId)" :src="info.cover" />
+                    <p class="productDescription">{{info.description}}</p>
+                    <p class="productPrice">R$ {{info.price}}</p>
+                    <button v-on:click="deleteFavorite(info.id, index)" class="icon delete"><i class="fas fa-trash"></i></button>
                     <button class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>
-                <div class="productSingle">
-                    <img src="https://images.tcdn.com.br/img/img_prod/482949/blusa_feminina_minuty_country_suede_291_2778_1_20210809101902.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-                <div class="productSingle">
-                    <img src="http://2.bp.blogspot.com/-ikgwp4F21S4/Ue8bTIXrw-I/AAAAAAAAAt0/Bsu-z3sDLvE/s1600/Blusa_de_Manga_L_4f146ae67a4b9.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-                <div class="productSingle">
-                    <img src="https://institucional.lojasleader.com.br/wp-content/uploads/2019/11/BLUSA-CROPPED-ESTAMPA-JOIAS-5999.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-                <div class="productSingle">
-                    <img src="https://www.gsuplementos.com.br/upload/produto/imagem/b_cal-a-jogger-growth-manuscrito.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-                <div class="productSingle">
-                    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/04/Imagem-de-Sapato-em-PNG-1280x720.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-                <div class="productSingle">
-                    <img src="https://imagensemoldes.com.br/wp-content/uploads/2020/04/Rel%C3%B3gio-Sony-PNG.png" />
-                    <p class="productDescription">loren ipsun dolor amet sit test, so i want to eat a piece of meat today</p>
-                    <p class="productPrice">R$ 999,00</p>
-                    <button class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
-                </div>
+
+                <p v-show="product.length < 1 && !loading" class="empty">
+                    Você não tem nada nos favoritos.
+                </p>
+
+                <p v-show="loading" class="loadingProducts">
+                    Carregando...
+                </p>
+
             </div>
         </section>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         components: {
             
+        },
+        data(){
+            return {
+                logged: false,
+                loggedUser: [],
+                product: [],
+                loading: true
+            }
+        },
+        methods:{
+            openProdcut: function(productId){
+                this.$router.push('/produto/'+productId);
+            },
+            deleteFavorite: function(id, index){
+
+                if(!confirm('Você quer realmente remover este item dos favoritos?')){
+                    return false;
+                }
+
+                this.product.splice(index, 1)
+                axios
+                    .delete('http://127.0.0.1:8000/api/favorite/'+id)
+            }
+        },
+        beforeCreate(){
+            /*Get user*/
+            axios
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
+                })
+                .then((r)=>{
+                    //Se o usuário estiver logado o sistema pega os dados da conta
+                    this.logged = r.data.logged;
+                    if(this.logged){
+                        this.loggedUser = r.data.loggedUser;
+                    }
+
+                })
+                .finally(()=>{
+                    axios
+                        .get('http://127.0.0.1:8000/api/favorites/'+this.loggedUser.id)
+                        .then((r)=>{
+                            this.product = r.data.favorites;
+                        })
+                        .finally(()=>{
+                            this.loading = false;
+                        });
+                });
         }
     }
 </script>
