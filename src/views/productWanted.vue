@@ -89,7 +89,7 @@
                         <p class="productDescription">{{product.name}}</p>
                         <p class="productPrice">R$ {{product.price}}</p>
                         <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
-                        <button  class="icon"><i class="fas fa-shopping-cart"></i></button>
+                        <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                     </div>
 
                     <p v-show="products.length < 1 && !loading" class="empty">
@@ -174,6 +174,26 @@
 
                 }else{
                     alert("Você deve estar logado para adicionar aos favoritos.")
+                }
+            },
+            addToKart: function(productId){
+                if(this.logged){
+                    
+                    axios
+                        .post('http://127.0.0.1:8000/api/addToKart',{
+                            'id': this.loggedUser.id,
+                            'productid': productId
+                        })
+                        .then((r)=>{
+                            if(r.data['error']){
+                                alert('Este produto já foi adicionado ao seu carrinho, caso queira mais quantidades dele, basta definir isso no seu carrinho.')
+                            }else{  
+                                alert("Produto adicionado no carrinho.")
+                            }
+                        });
+
+                }else{
+                    alert("Você deve estar logado para adicionar ao carrinho.")
                 }
             }
         },

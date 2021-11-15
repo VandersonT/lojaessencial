@@ -8,7 +8,7 @@
                     <p class="productDescription">{{info.description}}</p>
                     <p class="productPrice">R$ {{info.price}}</p>
                     <button v-on:click="deleteFavorite(info.id, index)" class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button class="icon"><i class="fas fa-shopping-cart"></i></button>
+                    <button v-on:click="addToKart(info.productId)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>
 
                 <p v-show="product.length < 1 && !loading" class="empty">
@@ -52,6 +52,25 @@
                 this.product.splice(index, 1)
                 axios
                     .delete('http://127.0.0.1:8000/api/favorite/'+id)
+            },
+            addToKart: function(productId){
+                if(this.logged){
+                    axios
+                        .post('http://127.0.0.1:8000/api/addToKart',{
+                            'id': this.loggedUser.id,
+                            'productid': productId
+                        })
+                        .then((r)=>{
+                            if(r.data['error']){
+                                alert('Este produto já foi adicionado ao seu carrinho, caso queira mais quantidades dele, basta definir isso no seu carrinho.')
+                            }else{  
+                                alert("Produto adicionado no carrinho.")
+                            }
+                        });
+
+                }else{
+                    alert("Você deve estar logado para adicionar ao carrinho.")
+                }
             }
         },
         beforeCreate(){
