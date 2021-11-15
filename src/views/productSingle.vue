@@ -3,7 +3,9 @@
         <section class="boxProdutSingle">
             <div class="showProdut">
                 <div class="showProdutImages">
-                    <img class="mainImage" :src="currentImage" />
+                    <div class="zoom">
+                        <img class="mainImage" :src="currentImage" />
+                    </div>
                     <div class="productGallery">
                         <div class="scrollGallery">
                             <img v-on:click="viewNewImage(index)" v-for="(info, index) in productImages" v-bind:key="info.id" class="miniImage" :src="info.url"/>
@@ -38,8 +40,8 @@
                     <div class="calcFrete">
                         <p>Calcular frete:</p>
                         <input type="number" placeholder="00000-000" />
-                        <button>ok</button>
-                        <p class="link">Não sei o meu cep</p>
+                        <button onClick="alert('Este recurso foi desabilitado pelo proprietário')">ok</button>
+                        <p class="link" onClick="alert('Este recurso foi desabilitado pelo proprietário')">Não sei o meu cep</p>
                     </div>
 
                     <div>
@@ -51,18 +53,7 @@
             </div>
             <div class="infoProduct">
                 <h1 class="title">Informações do produto:</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut facilisis commodo vulputate. Fusce tristique, est dictum dictum ultrices, turpis magna tincidunt nisl, condimentum aliquet risus sapien faucibus eros. Aenean blandit arcu nec purus aliquam fermentum. Donec tempus eget dui et ultrices. Etiam lobortis in elit consectetur rhoncus. Nunc id lorem sem. Proin tortor elit, sollicitudin nec tincidunt eu, mollis non metus. Proin orci nulla, malesuada id nisl non, ultrices vestibulum felis. Donec velit dolor, maximus id metus et, ullamcorper feugiat diam. Integer condimentum a orci quis euismod.
-                </p>
+                <p>{{product.info}}</p>
             </div>
 
             <div class="productComments">
@@ -230,9 +221,32 @@
         align-items: center;
     }
 
-    .showProdutImages .mainImage{
+    .showProdutImages .zoom{
         width: 100%;
         height: calc(100% - 100px);
+    }
+
+    .mainImage{
+        width: 100%;
+        height: 100%;
+    }
+
+    .zoom{
+        max-width: 100%;
+        overflow: hidden;
+        cursor: zoom-in;
+    }
+
+    .zoom .mainImage{
+        transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+    }
+
+    .zoom .mainImage:hover{
+        transform: scale(1,4);
+        -moz-transform: scale(1.4);
+        -webkit-transform: scale(1.4);
     }
 
     .productGallery{

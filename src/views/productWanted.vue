@@ -85,7 +85,7 @@
                 <h1>Resultados para {{search}}:</h1>
                 <div class="showCase">
                     <div v-show="products.length > 0 && !loading" v-for="product in products" v-bind:key="product.id" class="productSingle">
-                        <img :src="product.cover" />
+                        <img v-on:click="openProdcut(product.id)" :src="product.cover" />
                         <p class="productDescription">{{product.name}}</p>
                         <p class="productPrice">R$ {{product.price}}</p>
                         <button class="icon save"><i class="fas fa-heart"></i></button>
@@ -150,6 +150,9 @@
                     .finally(()=>{
                         this.loading = false;
                     });
+            },
+            openProdcut: function(productId){
+                this.$router.push('/produto/'+productId);
             }
         },
         beforeMount(){

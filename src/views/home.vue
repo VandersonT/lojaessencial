@@ -294,7 +294,6 @@
         font-size: 13px;
         font-weight: normal;
         line-height: 12px;
-        cursor: pointer;
     }
 
     .productPrice{

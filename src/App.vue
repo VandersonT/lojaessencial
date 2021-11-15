@@ -47,10 +47,6 @@
       list-style: none;
   }
 
-  html {
-      scroll-behavior: smooth;
-  }
-
   /*-----------------SCROLL-BAR---------------*/
   ::-webkit-scrollbar{
       width: 10px;

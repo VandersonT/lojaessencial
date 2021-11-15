@@ -67,8 +67,11 @@
         },
         methods:{
             changeSelected: function(route){
+                var url = window.location.href;
+                url = url.split('/');
+                currentPage = '/'+url[4];
 
-                if(route != this.selected){
+                if(route != currentPage){
                     this.$router.push(route) 
                     this.selected = route;
                 }
@@ -199,7 +202,7 @@
         text-decoration: none;
     }
 
-    /*.selected,*/
+    .selected,
     .menu .btn:hover{
         border-bottom: 1px solid rgb(236, 236, 236) !important;
     }
