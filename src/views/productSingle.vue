@@ -3,27 +3,23 @@
         <section class="boxProdutSingle">
             <div class="showProdut">
                 <div class="showProdutImages">
-                    <img class="mainImage" src="http://127.0.0.1:8000/storage/x6YiD8IVoU5jvRcQQ5IqC2i1uR6uFosVApQxPqQ0.jpg" />
+                    <img class="mainImage" :src="currentImage" />
                     <div class="productGallery">
                         <div class="scrollGallery">
-                            <img class="miniImage" src="../assets/images/coat.jpg"/>
-                            <img class="miniImage" src="../assets/images/coat.jpg"/>
-                            <img class="miniImage" src="../assets/images/coat.jpg"/>
-                            <img class="miniImage" src="../assets/images/coat.jpg"/>
-                            <img class="miniImage" src="../assets/images/coat.jpg"/>
+                            <img v-on:click="viewNewImage(index)" v-for="(info, index) in productImages" v-bind:key="info.id" class="miniImage" :src="info.url"/>
                         </div>
                     </div>
                 </div>
                 <div class="showProdutInfo">
-                    <h1>Casaco de Treident</h1>
+                    <h1>{{product.name}}</h1>
                     
                     <div class="showProductDescription">
                         <b class="subTitleProduct">Descrição:</b>
-                        <p>loren ipsun dolor o uqe eu quiser falar i will say because i know it and is very userful loren ipsun dolor o uqe eu quiser falar i will say because i know it and is very userful</p>
+                        <p>{{product.description}}</p>
                     </div>
                     
                     <div class="showProductPrice">
-                        <b class="subTitleProduct">Preço:</b><span> R$ 999,00</span>
+                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}}</span>
                     </div>
                     
                     <select>
@@ -35,8 +31,8 @@
                     </select>
 
                     <div class="setAmount">
-                        <p>Quantidade:</p>
-                        <input type="number" value="1" placeholder="Digite a quantidade" />
+                        <p>Quantidade: ({{product.amount}} disponiveis)</p>
+                        <input @keyup="verifyNumber()" v-model="amount" type="number" placeholder="Digite a quantidade" />
                     </div>
 
                     <div class="calcFrete">
@@ -170,9 +166,44 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         components: {
             
+        },
+        data(){
+            return{
+                product: [],
+                productImages: [],
+                currentImage: '',
+                amount: 1,
+                amountBackup: 1
+            }
+        },
+        methods:{
+            viewNewImage: function(idImage){
+                this.currentImage = this.productImages[idImage].url;
+            },
+            verifyNumber: function(){
+                if(this.amount > this.product.amount){
+                    this.amount = this.amountBackup;
+                    return false;
+                }
+                this.amountBackup = this.amount;
+            }
+        },
+        beforeCreate () {
+            window.scrollTo(0, 0)
+            axios
+                .get('http://127.0.0.1:8000/api/cloth/'+this.$route.params.id)
+                .then((r)=>{
+                    this.product = r.data.product;
+                    this.productImages = r.data.images;
+
+                    this.currentImage = this.product.cover;
+
+                });
         }
     }
 </script>
@@ -190,7 +221,7 @@
 
     .showProdutImages{
         width: 460px;
-        height: 70vh;
+        height: 500px;
         text-align: center;
         border: 1px solid rgb(179, 179, 179);
         display: flex;
@@ -222,6 +253,7 @@
         height: 100%;
         margin-right: 10px;
         border-right: 1px solid rgb(179, 179, 179);
+        cursor: pointer;
     }
 
     .miniImage:last-child{

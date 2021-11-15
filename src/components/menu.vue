@@ -199,7 +199,7 @@
         text-decoration: none;
     }
 
-    .selected,
+    /*.selected,*/
     .menu .btn:hover{
         border-bottom: 1px solid rgb(236, 236, 236) !important;
     }
@@ -221,7 +221,7 @@
         position: fixed;
         right: 10px;
         top: 56px;
-        background: rgb(71, 71, 71);
+        background: rgba(0, 0, 0, 0.9);
         /*display: flex;*/
         flex-direction: column;
         align-items: center;

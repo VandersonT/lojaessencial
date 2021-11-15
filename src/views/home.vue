@@ -11,7 +11,7 @@
 
             <div class="showCase">
 
-                <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
+                <div v-on:click="openProdcut(product.id)" v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
                     <img :src="product.cover" />
                     <p class="productDescription">{{product.description}}</p>
                     <p class="productPrice">R$ {{product.price}}</p>
@@ -75,6 +75,7 @@
             <p>Envie seu email abaixo para nós podermos te enviar novas ofertas e novidades sobre nosso produtos.</p>
             <input type="text" placeholder="Digite o seu email" v-model="getUserEmail" />
             <p v-if="userSendEmail" class="successStayTurned animate__animated animate__rubberBand">Seu email foi cadastrado com sucesso <i class="far fa-smile-wink"></i></p>
+            <p v-if="userSentAnInvalidEmail" class="errorStayTurned animate__animated animate__rubberBand"><i class="fas fa-times"></i> Digite um email valido!</p>
             <button v-on:click="sendEmail()">Enviar</button>
         </section>
 
@@ -116,14 +117,31 @@
                 loggedUser: [],
                 thereIsOpinions: true,
                 userSendEmail: false,
+                userSentAnInvalidEmail: false,
                 products: [],
                 getUserEmail: ''
             }
         },
         methods:{
             sendEmail: function(){
+                if(this.getUserEmail == ''){
+                    this.userSendEmail = false;
+                    this.userSentAnInvalidEmail = true;
+                    return false;
+                }
+                var usuario = this.getUserEmail.substring(0, this.getUserEmail.indexOf("@"));
+                var dominio = this.getUserEmail.substring(this.getUserEmail.indexOf("@")+ 1, this.getUserEmail.length);
+
+                if (!((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1) && (dominio.lastIndexOf(".") < dominio.length - 1))){
+                    this.userSentAnInvalidEmail = true;
+                    return false;
+                }
                 this.getUserEmail = '';
+                this.userSentAnInvalidEmail = false;
                 this.userSendEmail = true;
+            },
+            openProdcut: function(productId){
+                this.$router.push('/produto/'+productId);
             }
         },
         beforeCreate(){
@@ -131,13 +149,6 @@
                 .get('http://127.0.0.1:8000/api/clothes')
                 .then((r)=>{
                     this.products = r.data.products;
-                })
-                .catch(() => {
-                    /*
-                        Se deu falha aqui, então não é possivel o usuario logar na conta dele, pois a api
-                        esta com problemas e ela é quem irá autenticar ele, mas deixe um aviso falando que
-                        não é possivel no momento logar na conta e permita que ele navegue sem conta msm.
-                    */
                 });
         },
         mounted(){
@@ -155,7 +166,7 @@
                 slideStart(startIn);
             }else{
                 let box = document.querySelector('.boxOpinions');
-                box.innerHTML = "<h1 class='empty'>NÃ£o temos nenhum depoimento disponivel no momento!</h1>";
+                box.innerHTML = "<h1 class='empty'>Não temos nenhum depoimento disponivel no momento!</h1>";
             }
             
             function slideStart(startIn){
@@ -445,6 +456,9 @@
     }
     .successStayTurned{
         color: rgb(0, 212, 0) !important;
+    }
+    .errorStayTurned{
+        color: rgb(194, 19, 19) !important;
     }
     /*Footer*/
     footer{
