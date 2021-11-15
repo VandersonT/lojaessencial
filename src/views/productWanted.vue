@@ -88,8 +88,8 @@
                         <img v-on:click="openProdcut(product.id)" :src="product.cover" />
                         <p class="productDescription">{{product.name}}</p>
                         <p class="productPrice">R$ {{product.price}}</p>
-                        <button class="icon save"><i class="fas fa-heart"></i></button>
-                        <button class="icon"><i class="fas fa-shopping-cart"></i></button>
+                        <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
+                        <button  class="icon"><i class="fas fa-shopping-cart"></i></button>
                     </div>
 
                     <p v-show="products.length < 1 && !loading" class="empty">
@@ -112,6 +112,8 @@
         },
         data(){
             return{
+                logged: false,
+                loggedUser: [],
                 products: [],
                 loading: true,
                 //datas to filter
@@ -153,11 +155,45 @@
             },
             openProdcut: function(productId){
                 this.$router.push('/produto/'+productId);
+            },
+            addToFavorite: function(productId){
+                if(this.logged){
+                    
+                    axios
+                        .post('http://127.0.0.1:8000/api/addFavorite',{
+                            'id': this.loggedUser.id,
+                            'productid': productId
+                        })
+                        .then((r)=>{
+                            if(r.data['error']){
+                                alert('Este produto já foi adicionado aos favoritos.')
+                            }else{  
+                                alert("Produto adicionado aos favoritos")
+                            }
+                        });
+
+                }else{
+                    alert("Você deve estar logado para adicionar aos favoritos.")
+                }
             }
         },
         beforeMount(){
             this.getPrductSearched();
-        }
+        },
+        beforeCreate(){
+            axios
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
+                })
+                .then((r)=>{
+                    //Se o usuário estiver logado o sistema pega os dados da conta
+                    this.logged = r.data.logged;
+                    if(this.logged){
+                        this.loggedUser = r.data.loggedUser;
+                    }
+
+                });
+        },
     }
 </script>
 

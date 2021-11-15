@@ -128,13 +128,6 @@
                 })
                 .finally(()=>{
                     this.loadingHeader = false;
-                })
-                .catch(() => {
-                    /*
-                        Se deu falha aqui, então não é possivel o usuario logar na conta dele, pois a api
-                        esta com problemas e ela é quem irá autenticar ele, mas deixe um aviso falando que
-                        não é possivel no momento logar na conta e permita que ele navegue sem conta msm.
-                    */
                 });
         }
     }

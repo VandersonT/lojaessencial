@@ -45,7 +45,7 @@
                     </div>
 
                     <div>
-                        <button class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
+                        <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
                         <button class="buttonModel1 btnBlue">Adicionar ao carrinho</button>
                     </div>
                     
@@ -126,6 +126,8 @@
         },
         data(){
             return{
+                logged: false,
+                loggedUser: [],
                 product: [],
                 productImages: [],
                 currentImage: '',
@@ -160,10 +162,31 @@
             },
             makeAComment: function(){
                 alert("Você só poderá avaliar após adquirir o produto.")
+            },
+            addToFavorite: function(productId){
+                if(this.logged){
+                    
+                    axios
+                        .post('http://127.0.0.1:8000/api/addFavorite',{
+                            'id': this.loggedUser.id,
+                            'productid': productId
+                        })
+                        .then((r)=>{
+                            if(r.data['error']){
+                                alert('Este produto já foi adicionado aos favoritos.')
+                            }else{  
+                                alert("Produto adicionado aos favoritos")
+                            }
+                        });
+
+                }else{
+                    alert("Você deve estar logado para adicionar aos favoritos.")
+                }
             }
         },
         beforeCreate () {
             window.scrollTo(0, 0)
+            /*Get specific cloth*/
             axios
                 .get('http://127.0.0.1:8000/api/cloth/'+this.$route.params.id)
                 .then((r)=>{
@@ -175,10 +198,25 @@
 
                 });
 
+            /*Get all clothes*/
             axios
                 .get('http://127.0.0.1:8000/api/clothes')
                 .then((r)=>{
                     this.moreProducts = r.data.products;
+                });
+
+            /*GetUser*/
+            axios
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
+                })
+                .then((r)=>{
+                    //Se o usuário estiver logado o sistema pega os dados da conta
+                    this.logged = r.data.logged;
+                    if(this.logged){
+                        this.loggedUser = r.data.loggedUser;
+                    }
+
                 });
         }
     }
