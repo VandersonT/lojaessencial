@@ -23,8 +23,7 @@
                         <img :src="isLogged.photo" />
                     </div>
                     <div class="menuSlide">
-                        <router-link to="/perfil" class="btnMenuSlide">Seu perfil</router-link>
-                        <router-link to="/configuração" class="btnMenuSlide">Configuração</router-link>
+                        <div v-on:click="changeSelected('/perfil')" class="btnMenuSlide">Seu perfil</div>
                         <p v-on:click="logout()" class="btnMenuSlide">Sair</p>
                     </div>
                 </ul>
@@ -216,24 +215,26 @@
         display: none;
         position: fixed;
         right: 10px;
-        top: 56px;
-        background: rgba(0, 0, 0, 0.9);
-        /*display: flex;*/
+        top: 58px;
+        background: rgba(255, 255, 255);
         flex-direction: column;
         align-items: center;
-        border-radius: 2px;
     }
     .menuSlide .btnMenuSlide{
         width: 100%;
         text-align: center;
-        padding: 7px 15px;
-        color: rgb(255, 255, 255);
+        padding: 10px 20px;
+        color: rgb(0, 0, 0);
         text-decoration: none;
-        border-bottom: 1px solid rgb(105, 105, 105);
+        border-bottom: 1px solid rgb(0, 0, 0);
+        border-right: 1px solid rgb(0, 0, 0);
+        border-left: 1px solid rgb(0, 0, 0);
         cursor: pointer;
     }
+    
     .menuSlide .btnMenuSlide:hover{
-        background: rgb(0, 134, 211);
+        background: rgb(2, 162, 255);
+        color: white !important;
     }
     .loading{
         color: white;

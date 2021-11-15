@@ -14,7 +14,7 @@
                 <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
                     <img v-on:click="openProdcut(product.id)" :src="product.cover" />
                     <p class="productDescription">{{product.description}}</p>
-                    <p class="productPrice">R$ {{product.price}}</p>
+                    <p class="productPrice">R$ {{product.price.toFixed(2)}}</p>
                     <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
                     <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>

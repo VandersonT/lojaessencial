@@ -6,7 +6,7 @@
                 <div v-show="product.length > 0 && !loading" v-for="(info, index) in product" v-bind:key="info.id" class="productSingle">
                     <img v-on:click="openProdcut(info.productId)" :src="info.cover" />
                     <p class="productDescription">{{info.description}}</p>
-                    <p class="productPrice">R$ {{info.price}}</p>
+                    <p class="productPrice">R$ {{info.price.toFixed(2)}}</p>
                     <button v-on:click="deleteFavorite(info.id, index)" class="icon delete"><i class="fas fa-trash"></i></button>
                     <button v-on:click="addToKart(info.productId)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>

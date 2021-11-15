@@ -3,17 +3,17 @@
         <section class="boxLogin">
             <div class="login">
                 <div v-show="loginError" class="flashError">
-                    Email e/ou senha estão incorretos
+                    {{errorMessage}}
                 </div>
                 <h1><i class="fas fa-lock"></i>Faça Login</h1>
                 <input type="email" placeholder="Email" v-model="email"/>
                 <i class="fas fa-envelope iconInput"></i>
                 <input type="password" placeholder="Senha" v-model="password"/>
                 <i class="fas fa-lock iconInput"></i>
-                <div class="sameLine">
+                <!--<div class="sameLine">
                     <input type="checkbox" />
                     <p>Manter conectado</p>
-                </div>
+                </div>-->
                 <button v-on:click="login()">Entrar</button>
                 <router-link class="link" to="/cadastro">Ainda não tem uma conta?</router-link>
             </div>
@@ -24,6 +24,7 @@
 <script>
 
     import axios from 'axios'
+    
     export default {
         components: {
             
@@ -38,7 +39,7 @@
         },
         methods:{
             login: function(){
-                if(this.email == '' && this.password == '' ){
+                if(!this.email || !this.password){
                     this.loginError = true;
                     this.errorMessage = 'Não envie campos vazios';
                     return false;
@@ -166,7 +167,6 @@
     }
 
     .login button{
-        margin-top: 30px;
         background: rgb(0, 119, 255);
         outline: 0;
         border: 0;

@@ -15,7 +15,7 @@
                         <button v-on:click="more(info.id, index)">+</button>
                     </div>
                     <div>
-                        R$ {{info.price}}
+                        R$ {{info.price.toFixed(2)}}
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                     </div>-->
                     <div class="infoKartSingle">
                         <h3>Total</h3>
-                        <p>R$ {{total}}</p>
+                        <p>R$ {{total.toFixed(2)}}</p>
                     </div>
                 </div>
             </div>

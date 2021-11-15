@@ -21,7 +21,7 @@
                     </div>
                     
                     <div class="showProductPrice">
-                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}}</span>
+                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price.toFixed(2)}}</span>
                     </div>
                     
                     <select>
