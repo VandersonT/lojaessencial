@@ -18,6 +18,15 @@
                         R$ {{info.price}}
                     </div>
                 </div>
+
+                <p v-show="product.length < 1 && !loading" class="empty center">
+                    Seu carrinho esta vazio.
+                </p>
+
+                <p v-show="loading" class="loadingProducts center">
+                    Carregando...
+                </p>
+
             </div>
             
             <div class="kartInfo">
@@ -34,7 +43,7 @@
                     </div>-->
                     <div class="infoKartSingle">
                         <h3>Total</h3>
-                        <p>R$ 999,999</p>
+                        <p>R$ {{total}}</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +69,8 @@
                 product: [],
                 loading: true,
                 timer: null,
-                prices: []
+                prices: [],
+                total: 0
             }
         },
         methods:{
@@ -77,6 +87,10 @@
                     });
 
                 this.product[index].price += parseInt(this.prices[index]);
+                this.total = 0;
+                for(let i = 0; i < this.product.length; i++){
+                    this.total +=  this.product[i].price;
+                }
 
             },
             less: function(id, index){
@@ -93,6 +107,10 @@
                             'id': id,
                             'newAmount': this.product[index].amountWanted,
                         });
+                    this.total = 0;
+                    for(let i = 0; i < this.product.length; i++){
+                        this.total +=  this.product[i].price;
+                    }
                 }
             },
         },
@@ -120,11 +138,23 @@
                             
                             for(let i = 0; i < this.product.length; i++){
                                 this.prices[i] = this.product[i].price;
+
+                                if(this.product[i].amountWanted > 1){
+                                    for(let j = 0; j < this.product[i].amountWanted-1; j++){
+                                        this.product[i].price += this.prices[i];
+                                    }
+                                }
+
                             }
 
                         })
                         .finally(()=>{
                             this.loading = false;
+
+                            for(let i = 0; i < this.product.length; i++){
+                                this.total +=  this.product[i].price;
+                            }
+
                         });
                 });
         }
@@ -132,6 +162,9 @@
 </script>
 
 <style>
+    .center{
+        text-align: center;
+    }
     .boxKart{
         width: 90%;
         margin: 0 auto;
