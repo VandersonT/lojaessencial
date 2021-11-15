@@ -71,7 +71,13 @@
                         <p class="userMessage">Eu comprei na segunda e chegou na sexta feita, gostei do antendimento, comprarei novamente sem duvidas.</p>
                     </div>
 
+                    <p v-show="comments.length < 1" class="emptyComments">
+                        Nenhum comentário ainda!
+                    </p>
+
                 </div>
+
+                <button v-on:click="makeAComment()" class="makeAComment">Faça um comentário</button>
 
             </div>
 
@@ -151,6 +157,9 @@
                 }
 
                 this.$router.push('/produto/'+productId);
+            },
+            makeAComment: function(){
+                alert("Você só poderá avaliar após adquirir o produto.")
             }
         },
         beforeCreate () {
@@ -363,6 +372,19 @@
     }
 
     /*Product Comments*/
+    .emptyComments{
+        color: rgb(77, 77, 77);
+        font-size: 18px;
+    }
+    .makeAComment{
+        padding: 10px 10px;
+        border: 1px solid rgb(182, 182, 182);
+        cursor: pointer;
+        background: rgb(0, 152, 240);
+        color: white; 
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
     .boxCommentsSingle{
         margin-bottom: 30px;
     }
