@@ -37,12 +37,16 @@
                         <input @keyup="verifyNumber()" v-model="amount" type="number" placeholder="Digite a quantidade" />
                     </div>
 
-                    <div class="calcFrete">
+                    <div class="calcFrete free">
+                        <p><i class="fas fa-truck"></i> Frete gratis</p>
+                    </div>
+
+                    <!--<div class="calcFrete">
                         <p>Calcular frete:</p>
                         <input type="number" placeholder="00000-000" />
                         <button onClick="alert('Este recurso foi desabilitado pelo proprietário')">ok</button>
                         <p class="link" onClick="alert('Este recurso foi desabilitado pelo proprietário')">Não sei o meu cep</p>
-                    </div>
+                    </div>-->
 
                     <div>
                         <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
@@ -342,6 +346,10 @@
         margin: 20px 0;
     }
     
+    .free{
+        color: rgb(15, 139, 15);
+    }
+
     .setAmount input[type=number],
     .calcFrete input[type=number]{
         outline: 0;
@@ -380,10 +388,13 @@
 
     .btnBlue{
         background: rgb(0, 162, 255);
+        font-weight: bold;
     }
 
     .btnOrange{
-        background: rgb(44, 44, 43);
+        background: rgb(247, 143, 23);
+        color: rgb(255, 255, 255);
+        font-weight: bold;
     }
 
     /*Info product*/

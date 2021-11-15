@@ -65,6 +65,8 @@
                     this.logged = r.data.logged;
                     if(this.logged){
                         this.loggedUser = r.data.loggedUser;
+                    }else{
+                        this.$router.push('/login')
                     }
 
                 })

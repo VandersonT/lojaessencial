@@ -3,64 +3,19 @@
         <section class="boxKart">
             <h1><i class="fas fa-shopping-cart"></i> Seu Carrinho</h1>
             <div class="boxProducts2">
-                <div class="productSingle2">
-                    <img src="../assets/images/no-picture.png" />
+                <div v-show="product.length > 0 && !loading" v-for="(info, index) in product" v-bind:key="info.id" class="productSingle2">
+                    <img v-on:click="openProdcut(info.productId)" :src="info.cover" />
                     <div class="productInfo">
                         <h1>Casaco de couro de boiadeiro</h1>
                         <p>loren ipsun dolor amet ipsun de test and i don't know want i estou falandoloren ipsun dolor amet ipsun de test and i don't know want i estou falando</p>
                     </div>
                     <div class="boxAmount">
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button>
+                        <button v-on:click="less(info.id, index)">-</button>
+                        <p>{{info.amountWanted}}</p>
+                        <button v-on:click="more(info.id, index)">+</button>
                     </div>
                     <div>
-                        R$ 1000,00
-                    </div>
-                </div>
-                <div class="productSingle2">
-                    <img src="../assets/images/no-picture.png" />
-                    <div class="productInfo">
-                        <h1>Blusão de Seda Azul</h1>
-                        <p>loren ipsun dolor amet ipsun de test and i don't know want i estou falandoloren ipsun dolor amet ipsun de test and i don't know want i estou falando</p>
-                    </div>
-                    <div class="boxAmount">
-                        <button>-</button>
-                        <p>2</p>
-                        <button>+</button>
-                    </div>
-                    <div>
-                        R$ 50,00
-                    </div>
-                </div>
-                <div class="productSingle2">
-                    <img src="../assets/images/no-picture.png" />
-                    <div class="productInfo">
-                        <h1>Calça Jeans</h1>
-                        <p>loren ipsun dolor amet ipsun de test and i don't know want i estou falandoloren ipsun dolor amet ipsun de test and i don't know want i estou falando</p>
-                    </div>
-                    <div class="boxAmount">
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button>
-                    </div>
-                    <div>
-                        R$ 890,00
-                    </div>
-                </div>
-                <div class="productSingle2">
-                    <img src="../assets/images/no-picture.png" />
-                    <div class="productInfo">
-                        <h1>Sapato Social Amoleca</h1>
-                        <p>loren ipsun dolor amet ipsun de test and i don't know want i estou falandoloren ipsun dolor amet ipsun de test and i don't know want i estou falando</p>
-                    </div>
-                    <div class="boxAmount">
-                        <button>-</button>
-                        <p>10</p>
-                        <button>+</button>
-                    </div>
-                    <div>
-                        R$ 999,00
+                        R$ {{info.price}}
                     </div>
                 </div>
             </div>
@@ -92,9 +47,86 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         components: {
             
+        },
+        data(){
+            return {
+                logged: false,
+                loggedUser: [],
+                product: [],
+                loading: true,
+                timer: null,
+                prices: []
+            }
+        },
+        methods:{
+            openProdcut: function(productId){
+                this.$router.push('/produto/'+productId);
+            },
+            more: function(id, index){
+                this.product[index].amountWanted = this.product[index].amountWanted + 1;
+
+                axios
+                    .put('http://127.0.0.1:8000/api/kart',{
+                        'id': id,
+                        'newAmount': this.product[index].amountWanted,
+                    });
+
+                this.product[index].price += parseInt(this.prices[index]);
+
+            },
+            less: function(id, index){
+                this.product[index].amountWanted = this.product[index].amountWanted - 1;
+
+                if(this.product[index].amountWanted < 1){
+                    this.product.splice(index, 1);
+                    axios
+                        .delete('http://127.0.0.1:8000/api/kart/'+id);
+                }else{
+                    this.product[index].price -= parseInt(this.prices[index]);
+                    axios
+                        .put('http://127.0.0.1:8000/api/kart',{
+                            'id': id,
+                            'newAmount': this.product[index].amountWanted,
+                        });
+                }
+            },
+        },
+        beforeCreate(){
+            /*Get user*/
+            axios
+                .post('http://127.0.0.1:8000/api/userAuth',{
+                    'currentToken': localStorage.getItem('token')
+                })
+                .then((r)=>{
+                    //Se o usuário estiver logado o sistema pega os dados da conta
+                    this.logged = r.data.logged;
+                    if(this.logged){
+                        this.loggedUser = r.data.loggedUser;
+                    }else{
+                        this.$router.push('/login')
+                    }
+
+                })
+                .finally(()=>{
+                    axios
+                        .get('http://127.0.0.1:8000/api/kart/'+this.loggedUser.id)
+                        .then((r)=>{
+                            this.product = r.data.kart;
+                            
+                            for(let i = 0; i < this.product.length; i++){
+                                this.prices[i] = this.product[i].price;
+                            }
+
+                        })
+                        .finally(()=>{
+                            this.loading = false;
+                        });
+                });
         }
     }
 </script>
@@ -134,6 +166,7 @@
         width: 120px;
         height: 90%;
         border-radius: 10px;
+        cursor: pointer;
     }
 
     .productInfo h1{
