@@ -11,8 +11,8 @@
 
             <div class="showCase">
 
-                <div v-on:click="openProdcut(product.id)" v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
-                    <img :src="product.cover" />
+                <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
+                    <img v-on:click="openProdcut(product.id)" :src="product.cover" />
                     <p class="productDescription">{{product.description}}</p>
                     <p class="productPrice">R$ {{product.price}}</p>
                     <button class="icon save"><i class="fas fa-heart"></i></button>

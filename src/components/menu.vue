@@ -4,7 +4,7 @@
         <div v-on:click="changeSelected('/')" class="logo" to="/"></div>
 
         <div class="boxSearch">
-           <input type="text" v-model="search" placeholder="Procura algo especifico?" />
+           <input @keydown.enter="searchProduct()" type="text" v-model="search" placeholder="Procura algo especifico?" />
            <button v-on:click="searchProduct()" class="boxSearch--button"><i class="fas fa-search"></i></button>
         </div>
 

@@ -108,24 +108,10 @@
             </div>
 
             <div class="similarProduct">
-                 <h1 class="title">Produtos Similares:</h1>
+                 <h1 class="title">Mais Produtos:</h1>
                  <div class="boxSimilarProduct">
                     <div class="scrollGallery">
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
-                        <img src="../assets/images/coat.jpg" class="similarProductImage" />
+                        <img v-on:click="openProdcut(product.id)" v-for="product in moreProducts" v-bind:key="product.id" :src="product.cover" class="similarProductImage" />
                     </div>
                  </div>
             </div>
@@ -160,6 +146,7 @@
     import axios from 'axios'
 
     export default {
+
         components: {
             
         },
@@ -169,7 +156,8 @@
                 productImages: [],
                 currentImage: '',
                 amount: 1,
-                amountBackup: 1
+                amountBackup: 1,
+                moreProducts: []
             }
         },
         methods:{
@@ -182,6 +170,17 @@
                     return false;
                 }
                 this.amountBackup = this.amount;
+            },
+            openProdcut: function(productId){
+                var url = window.location.href;
+                url = url.split('/');
+                var currentId = url[5];
+
+                if(currentId == productId){
+                    return false;
+                }
+
+                this.$router.push('/produto/'+productId);
             }
         },
         beforeCreate () {
@@ -194,6 +193,12 @@
 
                     this.currentImage = this.product.cover;
 
+                });
+
+            axios
+                .get('http://127.0.0.1:8000/api/clothes')
+                .then((r)=>{
+                    this.moreProducts = r.data.products;
                 });
         }
     }
@@ -436,5 +441,6 @@
         height: 180px;
         background: rgb(71, 71, 71);
         border-right: 1px solid rgb(143, 143, 143);
+        cursor: pointer;
     }
 </style>
