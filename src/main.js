@@ -10,7 +10,6 @@ import productSingle from './views/productSingle.vue'
 import favorites from './views/favorites.vue'
 import kart from './views/kart.vue'
 import profile from './views/profile.vue'
-import settings from './views/settings.vue'
 import notFound from './views/notFound.vue'
 
 
@@ -26,7 +25,6 @@ const router = new VueRouter({
     {path: '/favoritos', component:favorites},
     {path: '/carrinho', component:kart},
     {path: '/perfil', component:profile},
-    {path: '/configuracao', component:settings},
     {path: '*', component:notFound}
   ]
 });

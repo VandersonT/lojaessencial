@@ -119,5 +119,10 @@
     }
     /*A página que exibe os produtos que foram encontrados usa a mesma estrutura html/css que a página home: .
     Então, para não repetir css o css dele é compartilhado e se encontra em style da página home*/
-    
+    @media screen and (max-width: 500px) {
+        .boxFavorites h1{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    }
 </style>

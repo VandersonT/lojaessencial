@@ -14,7 +14,7 @@
                         <p>{{info.amountWanted}}</p>
                         <button v-on:click="more(info.id, index)">+</button>
                     </div>
-                    <div>
+                    <div class="priceSingle">
                         R$ {{info.price.toFixed(2)}}
                     </div>
                 </div>
@@ -32,15 +32,6 @@
             <div class="kartInfo">
                 <h1>Informações:</h1>
                 <div class="boxKartInfo">
-                    <!--<div class="infoKartSingle">
-                        <div class="getCep">
-                            <p>Digite o seu cep:</p>
-                            <input type="number" />
-                            <button><i class="fas fa-search"></i></button>
-                            <p class="link">Não sei o meu cep</p>
-                        </div>
-                        não calculado
-                    </div>-->
                     <div class="infoKartSingle">
                         <h3>Total</h3>
                         <p>R$ {{total.toFixed(2)}}</p>
@@ -222,8 +213,11 @@
         padding: 3px 8px;
         border: 1px solid rgb(182, 182, 182);
         cursor: pointer;
-        background: rgb(0, 152, 240);
+        background: rgb(8, 8, 8);
         color: white;
+    }
+    .boxAmount button:active{
+        background: rgb(19, 19, 19);
     }
 
     .boxAmount p{
@@ -261,23 +255,6 @@
         margin-top: 5px;
     }
 
-    .getCep button{
-        width: max-content;
-        padding: 5px 8px;
-        border: 0;
-        border-radius: 5px;
-        background: rgb(0, 162, 255);
-        color: white;
-        text-transform: uppercase;
-        cursor: pointer;
-        margin-left: 5px;
-    }
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
     /*Buttom buy*/
     .boxBtn{
         width: 100%;
@@ -294,5 +271,98 @@
         color: white;
         text-transform: uppercase;
         cursor: pointer;
+    }
+    @media screen and (max-width: 1050px) {
+        .productSingle2{
+            padding: 10px 10px;
+        }
+        .productSingle2 img{
+            width: 90px;
+            height: 80px;
+        }
+        .productInfo h1{
+            font-size: 19px;
+        }
+        .productInfo p{
+            font-size: 13px;
+        }
+    }
+    @media screen and (max-width: 830px) {
+        .boxKart h1{
+            font-size: 19px;
+        }
+        .productInfo h1{
+            font-size: 16px;
+        }
+        .productInfo p{
+            max-width: 45ch;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        .boxKart h1{
+            font-size: 16px;
+            margin-top: 30px;
+        }
+        .productSingle2 img{
+            width: 60px;
+            height: 50px;
+        }
+        .productInfo h1{
+            font-size: 16px;
+        }
+        .productInfo p{
+            max-width: 45ch;
+        }
+        .productSingle2{
+            height: 70px;
+        }
+        .boxAmount p{
+            height: auto;
+            padding: 0 8px;
+        }
+        .boxAmount button{
+            background: transparent;
+            color: black;
+        }
+        .productInfo h1{
+            width: max-content;
+            font-size: 13px;
+        }
+        .productInfo p{
+            display: none;
+        }
+        .priceSingle{
+            font-size: 10px;
+        }
+        .infoKartSingle h3{
+            font-size: 15px;
+        }
+        .infoKartSingle p{
+            font-size: 12px;
+        }
+        .kartInfo{
+            padding-top: 0;
+        }
+        .btnBuy{
+            margin-top: 20px;
+            padding: 10px 8px;
+            font-size: 10px;
+        }
+    }
+    @media screen and (max-width: 470px) {
+        .productInfo h1{
+            display: none;
+        }
+        .productSingle2{
+            height: 60px;
+        }
+        .productSingle2 img{
+            width: 40px;
+            height: 35px;
+        } 
+        .boxAmount p{
+            padding: 0 4px;
+        }
     }
 </style>
