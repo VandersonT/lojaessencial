@@ -128,7 +128,7 @@
             }
         },
         methods:{
-            getPrductSearched: function(){
+            getProductSearched: function(){
                 var url = window.location.href;
                 url = url.split('?search=');
                 this.search = url[1];
@@ -201,7 +201,7 @@
             }
         },
         beforeMount(){
-            this.getPrductSearched();
+            this.getProductSearched();
         },
         beforeCreate(){
             axios

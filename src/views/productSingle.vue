@@ -207,10 +207,15 @@
             axios
                 .get('http://127.0.0.1:8000/api/cloth/'+this.$route.params.id)
                 .then((r)=>{
+
+                    if(r.data.error){
+                        this.$router.push('/')
+                        return false;
+                    }
+
                     this.product = r.data.product;
                     this.productImages = r.data.images;
                     this.comments = r.data.comments;
-
                     this.currentImage = this.product.cover;
 
                 });

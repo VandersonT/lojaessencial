@@ -649,6 +649,9 @@
             width: 130px;
             height: 60px;
         }
+        .empty{
+            font-size: 16px;
+        }
     }
     
     @media screen and (max-width: 510px){
@@ -728,6 +731,9 @@
             font-size: 20px;
             margin-bottom: 0;
             margin-top: 20px;
+        }
+        .empty{
+            font-size: 14px;
         }
     }
 </style>
