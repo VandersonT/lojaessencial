@@ -273,6 +273,9 @@
         .fields{
             padding-top: 0;
         }
+        .flash p{
+            font-size: 16px;
+        }
     }
 
     @media screen and (max-width: 430px){
@@ -289,6 +292,9 @@
         }
         .fieldSingle input:not(input[type=file]){
             font-size: 13px;
+        }
+        .flash p{
+            font-size: 14px;
         }
     }
 </style>
