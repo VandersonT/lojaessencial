@@ -34,8 +34,8 @@
 
     </div>
     <div class="searchMobile">
-        <input type="text" v-model="search" placeholder="Procura algo especifico?" />
-        <button><i class="fas fa-search"></i></button>
+        <input @keydown.enter="searchProduct()" type="text" v-model="search" placeholder="Procura algo especifico?" />
+        <button v-on:click="searchProduct()"><i class="fas fa-search"></i></button>
     </div>
 </div>
 </template>
@@ -216,6 +216,7 @@
         position: fixed;
         right: 10px;
         top: 58px;
+        z-index: 3;
         background: rgba(255, 255, 255);
         flex-direction: column;
         align-items: center;
@@ -247,6 +248,7 @@
         max-width: 100%;
         top: 50px;
         left: 0;
+        z-index: 1;
         background: rgb(18, 18, 20);
         border-top: 1px solid rgb(39, 39, 39);
         padding: 10px;
@@ -286,6 +288,9 @@
         }
         .searchMobile{
             display: flex;
+        }
+        .menuSlide{
+            top: 50px;
         }
     }
     

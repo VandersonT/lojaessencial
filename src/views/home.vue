@@ -492,18 +492,35 @@
         border-radius: 5px;
         margin-bottom: 10px;
     }
-    .stayTurned button{
-        border: 0;
+    .stayTurned p{
+        width: 500px;
+        color: #777777;
+        font-family: Arial,tahoma,verdana;
+        font-weight: lighter;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .stayTurned input{
+        width: 400px;
         padding: 10px;
-        background: rgb(0, 110, 255);
+        font-size: 18px;
+        outline: 0;
+        border: 1px solid rgb(141, 141, 141);
+        color: gray;
         border-radius: 5px;
-        text-transform: uppercase;
-        color: white;
-        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    .stayTurned button{
+        padding: 8px 15px;
+        border: 1px solid rgb(182, 182, 182);
         cursor: pointer;
+        background: rgb(0, 152, 240);
+        color: white;
+        border-radius: 5px;
     }
     .stayTurned button:hover{
-        background: rgb(0, 103, 238);
+        background: rgb(0, 147, 233);
         color: rgb(241, 241, 241);
     }
     .successStayTurned{
@@ -565,6 +582,26 @@
             left: 3%;
             font-size: 25px;
         }
+
+        .userOpinions--title,
+        .boxProducts h1,
+         .stayTurned h1{
+            font-size: 22px;
+        }
+        .boxPromotion{
+            height: 450px;
+        }
+        .boxPromotion--phrase{
+            font-size: 38px;
+            left: 80px;
+            top: 150px;
+        }
+        .boxPromotion img{
+            top: 170px;
+            left: 13%;
+            width: 200px;
+            height: 80px;
+        }
     }
     @media screen and (max-width: 850px){
         .boxMainImage{
@@ -576,13 +613,116 @@
             left: 20%;
             font-size: 27px;
         }
+        footer h1{
+            font-size: 24px;
+        }
+        .businessHours h2,
+        .contacts h2{
+            font-size: 19px;
+        }
+        .contacts p,
+        .businessHours p{
+            font-size: 14px;
+        }
+        .copyright{
+            font-size: 14px;
+        }
+        .opinionsSingle{
+            max-width: 95%;
+        }
     }
+    
+    @media screen and (max-width: 650px){
+        .boxPromotion--phrase{
+            font-size: 25px;
+            left: 50px;
+            top: 150px;
+        }
+        .boxPromotion img{
+            top: 160px;
+            left: 13%;
+            width: 130px;
+            height: 60px;
+        }
+    }
+    
+    @media screen and (max-width: 510px){
+        .userOpinions--title,
+        .boxProducts h1,
+        .stayTurned h1{
+            font-size: 18px;
+        }
+        .stayTurned p{
+            width: 90%;
+            font-size: 13px;
+        }
+        .stayTurned input{
+            width: 90%;
+            font-size: 14px;
+        }
+        .boxOpinions{
+            height: 250px;
+        }
+        .opinionsSingle{
+            height: 60%;
+            justify-content: space-around;
+        }
+        .opinionsSingle img{
+            width: 50px;
+            height: 50px;
+        }
+        .opinionsSingle--message{
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+        .opinionsSingle--author{
+            font-size: 15px;
+        }
+        .boxInfo{
+           flex-direction: column;
+           align-items: center;
+        }
+        .businessHours{
+            width: 50%;
+            text-align: left;
+        }
+        .contacts{
+            width: 50%;
+            margin-right: 0;
+            margin-bottom: 40px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        .businessHours h2,
+        .contacts h2{
+            font-size: 16px;
+        }
+    }
+
     @media screen and (max-width: 435px){
         .mainPhrase{
             width: 90%;
-            top: 10%;
+            top: 15%;
             left: 5%;
             font-size: 23px;
+        }
+        .businessHours{
+            width: 80%;
+        }
+        .contacts{
+            width: 80%;
+        }
+        .contacts p,
+        .businessHours p{
+            font-size: 12px;
+        }
+        .copyright{
+            font-size: 11px;
+        }
+        footer h1{
+            font-size: 20px;
+            margin-bottom: 0;
+            margin-top: 20px;
         }
     }
 </style>
