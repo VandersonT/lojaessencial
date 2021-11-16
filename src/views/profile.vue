@@ -94,8 +94,8 @@
 
                 if(fileVerify.value){
                     axios
-                        .post('http://127.0.0.1:8000/api/updatePhoto/1', data).then(function (response) {
-                            console.log(response.data);
+                        .post('http://127.0.0.1:8000/api/updatePhoto/1', data).then(function () {
+                            //console.log(response.data);
                         }); 
                     photoUpdated = true;
                 }

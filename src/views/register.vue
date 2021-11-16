@@ -134,7 +134,7 @@
     .register{
         width: 400px;
         height: max-content;
-        margin-top: 100px;
+        margin-top: 10vh;
         background: rgba(0, 0, 0, 0.9);
         display: flex;
         flex-direction: column;

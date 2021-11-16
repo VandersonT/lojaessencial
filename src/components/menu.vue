@@ -140,7 +140,7 @@
         z-index: 2;
         width: 100vw;
         max-width: 100%;
-        height: 70px;
+        height: 80px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -148,7 +148,7 @@
         background: rgb(18, 18, 20);
     }
     .logo{
-        width: 80px;
+        width: 90px;
         height: 80%;
         background-image: url('../assets/images/logo2.png');
         background-position: center;
@@ -157,12 +157,12 @@
     }
 
     .boxSearch input{
+        width: 300px;
         font-size: 16px;
-        padding: 5px;
-        padding-left: 10px;
+        padding: 8px 10px;
         outline: 0;
         border: 0;
-        border-radius: 5px;
+        border-radius: 3px;
         margin-right: 5px;
         color: rgb(105, 105, 105);
     }
@@ -170,10 +170,10 @@
     .boxSearch--button{
         position: relative;
         top: 1px;
-        font-size: 18px;
+        font-size: 19px;
         border: 0;
         padding: 4px 8px;
-        border-radius: 5px;
+        border-radius: 6px;
         cursor: pointer;
         color: rgb(27, 27, 27);
         background: white;

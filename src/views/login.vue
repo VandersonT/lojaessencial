@@ -114,7 +114,7 @@
     .login{
         width: 400px;
         height: max-content;
-        margin-top: 200px;
+        margin-top: 20vh;
         background: rgba(0, 0, 0, 0.9);
         display: flex;
         flex-direction: column;

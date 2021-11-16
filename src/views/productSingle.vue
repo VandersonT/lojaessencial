@@ -21,7 +21,7 @@
                     </div>
                     
                     <div class="showProductPrice">
-                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price.toFixed(2)}}</span>
+                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}}</span>
                     </div>
                     
                     <select>
@@ -40,13 +40,6 @@
                     <div class="calcFrete free">
                         <p><i class="fas fa-truck"></i> Frete gratis</p>
                     </div>
-
-                    <!--<div class="calcFrete">
-                        <p>Calcular frete:</p>
-                        <input type="number" placeholder="00000-000" />
-                        <button onClick="alert('Este recurso foi desabilitado pelo proprietário')">ok</button>
-                        <p class="link" onClick="alert('Este recurso foi desabilitado pelo proprietário')">Não sei o meu cep</p>
-                    </div>-->
 
                     <div>
                         <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
@@ -72,7 +65,7 @@
                                 <i v-for="index in comment.rate" :key="index" class="fas fa-star star"></i>
                             </p>
                         </div>
-                        <p class="userMessage">Eu comprei na segunda e chegou na sexta feita, gostei do antendimento, comprarei novamente sem duvidas.</p>
+                        <p class="userMessage">{{comment.comment}}</p>
                     </div>
 
                     <p v-show="comments.length < 1" class="emptyComments">
@@ -260,7 +253,7 @@
         width: 460px;
         height: 500px;
         text-align: center;
-        border: 1px solid rgb(179, 179, 179);
+        border: 1px solid rgb(165, 165, 165);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -298,7 +291,7 @@
     .productGallery{
         width: 100%;
         height: 100px;
-        border-top: 1px solid rgb(179, 179, 179);
+        border-top: 1px solid rgb(165, 165, 165);
         overflow-x: auto;
     }
 
@@ -312,7 +305,7 @@
         width: 110px;
         height: 100%;
         margin-right: 10px;
-        border-right: 1px solid rgb(179, 179, 179);
+        border-right: 1px solid rgb(165, 165, 165);
         cursor: pointer;
     }
 
@@ -329,7 +322,7 @@
     .showProdutInfo{
         width: calc(100% - 460px);
         padding-left: 20px;
-        border: 1px solid rgb(179, 179, 179);
+        border: 1px solid rgb(165, 165, 165);
         border-left: 0;
     }
 
@@ -339,6 +332,7 @@
         text-align: center;
         margin-top: 25px;
         color: #4e4e4e;
+        font-size: 21px;
     }
 
     .showProductPrice,
@@ -348,7 +342,7 @@
 
     .showProductDescription p{
         width: 600px;
-        color: #777777;
+        color: #4e4e4e;
     }
 
     .showProdutInfo select{
@@ -369,10 +363,10 @@
         color: rgb(15, 139, 15);
     }
 
-    .setAmount input[type=number],
+    .setAmount input,
     .calcFrete input[type=number]{
         outline: 0;
-        border: 1px solid rgb(168, 168, 168);
+        border: 1px solid rgb(165, 165, 165);
         border-radius: 5px;
         padding: 5px 10px;
         margin-top: 5px;
@@ -426,11 +420,12 @@
     .title{
         text-transform: capitalize;
         font-weight: lighter;
-        font-size: 28px;
-        color: #4e4e4e;
+        font-size: 22px;
+        color: #666666;
+        margin-top: 60px;
         margin-bottom: 20px;
         font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(192, 192, 192);
+        border-bottom: 1px solid rgb(179, 179, 179);
     }
 
     .infoProduct p{
@@ -457,7 +452,7 @@
         margin-bottom: 30px;
     }
     .commentSingle{
-        border: 1px solid rgb(192, 192, 192);
+        border: 1px solid rgb(165, 165, 165);
         margin-bottom: 10px;
         padding: 10px;
     }

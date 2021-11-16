@@ -234,8 +234,8 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: 20px;
-        border-right: 1px solid rgb(189, 189, 189);
-        border-bottom: 1px solid rgb(189, 189, 189);
+        border-right: 1px solid #8a8a8a;
+        border-bottom: 1px solid #8a8a8a;
     }
     .boxFilter h1{
         font-family: Arial,tahoma,verdana;

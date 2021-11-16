@@ -175,7 +175,7 @@
     .productSingle2{
         width: 100%;
         height: 150px;
-        border: 1px solid rgb(197, 197, 197);
+        border: 1px solid rgb(165, 165, 165);
         border-top: 0;
         display: flex;
         justify-content: space-between;
@@ -183,7 +183,7 @@
         padding: 10px 30px;
     }
     .productSingle2:nth-child(1){
-        border-top: 1px solid rgb(197, 197, 197);
+        border-top: 1px solid rgb(165, 165, 165);
     }
 
     .productSingle2 img{
@@ -232,7 +232,7 @@
         padding-top: 50px;
     }
     .infoKartSingle{
-         border: 1px solid rgb(197, 197, 197);
+         border: 1px solid rgb(165, 165, 165);
          border-top: 0;
          padding: 20px;
          display: flex;
@@ -240,7 +240,7 @@
          align-items: center;
     }
     .infoKartSingle:nth-child(1){
-        border-top: 1px solid rgb(197, 197, 197);
+        border-top: 1px solid rgb(165, 165, 165);
     }
 
     .getCep{

@@ -268,6 +268,9 @@
 </script>
 
 <style>
+    body{
+        background: #dbdbdb;
+    }
     .boxMainImage{
         width: 100vw;
         max-width: 100%;
@@ -276,6 +279,7 @@
         background-image: url('../assets/images/mainBanner.jpg');
         background-position: center;
         background-size: cover;
+        border-bottom: 1px solid rgb(122, 122, 122);
     }
 
     .mainPhrase{
@@ -309,7 +313,7 @@
         color: #4e4e4e;
         margin-bottom: 10px;
         font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(192, 192, 192);
+        border-bottom: 1px solid rgb(122, 122, 122);
     }
 
     .showCase{
@@ -342,9 +346,9 @@
     }
 
     .productDescription{
-        color: #777777;
+        color: #3d3d3d;
         margin-bottom: 10px;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: normal;
         line-height: 12px;
     }
@@ -399,12 +403,12 @@
         color: #4e4e4e;
         margin-bottom: 10px;
         font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(192, 192, 192);
+        border-bottom: 1px solid rgb(122, 122, 122);
     }
     .boxOpinions{
         width: 100%;
         height: 400px;
-        border:1px solid rgb(201, 201, 201);
+        border:1px solid rgb(122, 122, 122);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -425,11 +429,12 @@
         height: 70px;
         border-radius: 100px;
         margin-bottom: 30px;
+        border: 1px solid rgb(165, 165, 165);
     }
     .opinionsSingle--message{
-       font-size: 17px;
+       font-size: 18px;
         margin-bottom: 30px;
-        color: #777777;
+        color: #525252;
     }
 
     .opinionsSingle--author{

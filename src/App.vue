@@ -74,7 +74,7 @@
       text-transform: uppercase;
       color: #272727;
       font-size: 20px;
-      background: white;
+      background: transparent;
       margin-right: 15px;
       cursor: pointer;
   }
