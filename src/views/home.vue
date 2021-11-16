@@ -275,7 +275,7 @@
         width: 100vw;
         max-width: 100%;
         height: 730px;
-        margin-top: 70px;
+        margin-top: 80px;
         background-image: url('../assets/images/mainBanner.jpg');
         background-position: center;
         background-size: cover;

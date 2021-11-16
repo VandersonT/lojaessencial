@@ -5,15 +5,17 @@
                 <h1>Filtro</h1>
                 
                 <div class="priceFilter">
-                    <h3>Preço:</h3>
-                    <select v-model="priceOrder">
-                        <option>Normal</option>
-                        <option>Menor Preço</option>
-                        <option>Maior Preço</option>
-                    </select>
-
-                    <h3>Produto:</h3>
+                    <div class="filterOrder">
+                        <h3>Preço:</h3>
+                        <select v-model="priceOrder">
+                            <option>Normal</option>
+                            <option>Menor Preço</option>
+                            <option>Maior Preço</option>
+                        </select>
+                    </div>
+                    
                     <div class="filterSingle">
+                        <h3>Produto:</h3>
                         <div>
                             <input v-model="productToSearch" type="checkbox" checked value="calça"/>
                             Calças
@@ -36,8 +38,9 @@
                         </div>
                     </div>
 
-                    <h3>Genero:</h3>
+                    
                     <div class="filterSingle">
+                        <h3>Genero:</h3>
                         <div>
                             <input type="radio" v-model="gender" value="todos" name="genderFilter" checked />
                             Todos
@@ -55,9 +58,9 @@
                             Feminino
                         </div>
                     </div>
-
-                    <h3>Para:</h3>
+                    
                     <div class="filterSingle">
+                        <h3>Para:</h3>
                         <div>
                             <input v-model="ageToSearch" value="bebês" type="checkbox" checked />
                             Bebês
@@ -83,7 +86,7 @@
             </div>
             <div class="boxResults">
                 <h1>Resultados para {{search}}:</h1>
-                <div class="showCase">
+                <div class="showCaseFavorites">
                     <div v-show="products.length > 0 && !loading" v-for="product in products" v-bind:key="product.id" class="productSingle">
                         <img v-on:click="openProdcut(product.id)" :src="product.cover" />
                         <p class="productDescription">{{product.name}}</p>
@@ -223,8 +226,12 @@
         color: #777777;
     }
     .boxProductsWanted{
-        margin-top: 70px;
+        margin-top: 80px;
         display: flex;
+    }
+    .filterOrder h3{
+        text-align: left;
+        padding-left: 20px;
     }
     .boxFilter{
         width: 350px;
@@ -292,4 +299,63 @@
     }
     /*A página que exibe os produtos que foram encontrados usa a mesma estrutura html/css que a página home: .
     Então, para não repetir css o css dele é compartilhado e se encontra em style da página home*/
+
+    .showCaseFavorites{
+        width: 100vw;
+        max-width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap:wrap;
+    }
+
+    @media screen and (max-width: 900px){
+        .filterOrder h3{
+            text-align: center;
+            padding-left: 0;
+            padding-right: 35px;
+        }
+        .boxProductsWanted{
+            flex-direction: column;
+        }
+        .boxResults{
+            width: 100%;
+            margin-bottom: 50px;
+        }
+        .boxFilter{
+            width: 100vw;
+            max-width: 100%;
+            height: auto;
+            flex-direction: flex;
+            min-height: auto;
+        }
+        .priceFilter{
+            display: flex;
+            flex-direction: row;
+        }
+        .boxFilter select{
+            height: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+        .filterSingle{
+            margin-left: 50px;
+        }
+        .boxFilter h1{
+            margin-top: 50px;
+            margin-bottom: 0;
+            font-size: 25px;
+        }
+        .boxFilter h3{
+            font-size: 17px;
+        }
+    }
+
+     @media screen and (max-width: 700px){
+        .priceFilter{
+            flex-direction: column;
+        }
+        .boxResults h1{
+            font-size: 20px;
+        }
+     }
 </style>
