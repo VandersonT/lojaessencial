@@ -7,7 +7,8 @@
                         <img class="mainImage" :src="currentImage" />
                     </div>
                     <div class="productGallery">
-                        <div class="scrollGallery">
+                        <p v-if="productImages < 1" class="emptyImages" >Este produto não possui mais nenhuma foto.</p>
+                        <div v-else class="scrollGallery">
                             <img v-on:click="viewNewImage(index)" v-for="(info, index) in productImages" v-bind:key="info.id" class="miniImage" :src="info.url"/>
                         </div>
                     </div>
@@ -301,6 +302,14 @@
         display: flex;
     }
 
+    .emptyImages{
+        color: gray;
+        width: 100%;
+        line-height: 90px;
+        font-size: 18px;
+        text-align: center;
+    }
+
     .miniImage{
         width: 110px;
         height: 100%;
@@ -341,7 +350,7 @@
     }
 
     .showProductDescription p{
-        width: 600px;
+        width: 100%;
         color: #4e4e4e;
     }
 
@@ -370,18 +379,6 @@
         border-radius: 5px;
         padding: 5px 10px;
         margin-top: 5px;
-    }
-    
-    .calcFrete button{
-        width: max-content;
-        padding: 5px 8px;
-        border: 0;
-        border-radius: 5px;
-        background: rgb(0, 162, 255);
-        color: white;
-        text-transform: uppercase;
-        cursor: pointer;
-        margin-left: 5px;
     }
 
     .buttonModel1{
@@ -498,5 +495,81 @@
         background: rgb(71, 71, 71);
         border-right: 1px solid rgb(143, 143, 143);
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 1130px){
+        .showProdutInfo h1{
+            font-size: 16px;
+            text-align: left;
+            color: black;
+        }
+        .subTitleProduct{
+            font-size: 16px;
+            color: black;
+        }
+        .showProductDescription p{
+            font-size: 14px;
+        }
+        .setAmount input,
+        .calcFrete input[type=number]{
+            font-size: 13px;
+        }
+        .buttonModel1{
+            font-size: 9px;
+        }
+        .calcFrete{
+            font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 850px){
+        .showProdut{
+            flex-direction: column;
+        }
+        .showProdutImages{
+            width: 100%;
+        }
+        .mainImage{
+            width: 70%;
+            height: 100%;
+            border: 1px solid gray;
+        }
+        .showProdutInfo{
+            width: 100%;
+            margin-top: 0;
+            padding: 20px;
+            padding-top: 0;
+            text-align: center;
+            border-left: 1px solid rgb(165, 165, 165);
+        }
+        .showProdutInfo h1{
+            text-align: center;
+        }
+        .userMessage{
+            width: 100%;
+            font-size: 14px;
+        }
+        .infoComment h1{
+            font-size: 15px;
+        }
+        .boxRate i{
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (max-width: 530px){
+        .mainImage{
+            width: 100%;
+            border: 0;
+        }
+        .similarProductImage{
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        .title{
+            font-size: 17px;
+        }
     }
 </style>
