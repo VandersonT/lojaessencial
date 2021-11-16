@@ -203,22 +203,6 @@
         margin-bottom: 10px;
         border: 1px solid rgb(121, 121, 121);
     }
-    .profile .section1 .stylizedButton{
-        border: 0;
-        padding: 10px;
-        background: rgb(27, 27, 27);
-        border-radius: 5px;
-        text-transform: uppercase;
-        color: white;
-        font-size: 11px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    .stylizedButton:hover{
-        background: rgb(238, 238, 238) !important;
-        color: black !important;
-        border: 1px solid black !important;
-    }
     .boxFileds{
         width: calc(100% - 300px);
     }
@@ -228,7 +212,7 @@
         flex-direction: column;
     }
     .fieldSingle{
-        width: 45%;
+        width: 400px;
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
@@ -268,5 +252,43 @@
     }
     .return:active{
         background: #922828 !important;
+    }
+    @media screen and (max-width: 730px){
+        .profile{
+           flex-direction: column;
+            margin-bottom: 70px;
+        }
+        .profile .section1{
+            width: 100%;
+            height: auto;
+            padding-bottom: 10px;
+        }
+        .boxFileds{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .fields{
+            padding-top: 0;
+        }
+    }
+
+    @media screen and (max-width: 430px){
+        .fields{
+            width: 100%;
+            align-items: center;
+        }
+        .fieldSingle{
+            width: 90%;
+        }
+        .profile .section1 img{
+            width: 100px;
+            height: 100px;
+        }
+        .fieldSingle input:not(input[type=file]){
+            font-size: 13px;
+        }
     }
 </style>
