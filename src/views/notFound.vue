@@ -62,4 +62,38 @@
         background: rgb(0, 103, 238);
         color: rgb(241, 241, 241);
     }
+    @media screen and (max-width: 1000px){
+        .error404{
+            width: 400px;
+        }
+        .error404 img{
+            height: 150px;
+        }
+    }
+    @media screen and (max-width: 630px){
+        .error404{
+            width: 300px;
+        }
+        .error404 img{
+            height: 100px;
+        }
+        .error404 p{
+            font-size: 15px;
+        }
+        .error404 button{
+            padding: 6px 15px;
+            font-size: 10px;
+        }
+    }
+    @media screen and (max-width: 350px){
+        .error404{
+            width: 90%;
+        }
+        .error404 p{
+            font-size: 11px;
+        }
+        .error404 img{
+            height: 80px;
+        }
+    }
 </style>
