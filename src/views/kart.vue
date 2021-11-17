@@ -34,7 +34,7 @@
                 <div class="boxKartInfo">
                     <div class="infoKartSingle">
                         <h3>Total</h3>
-                        <p>R$ {{total.toFixed(2)}}</p>
+                        <p>R$ {{total}},00</p>
                     </div>
                 </div>
             </div>

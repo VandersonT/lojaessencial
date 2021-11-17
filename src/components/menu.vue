@@ -88,6 +88,9 @@
                 if(this.search == ''){
                     return false;
                 }
+
+                this.search = this.search.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
                 var url = window.location.href;
                 url = url.split('?search=');
                 var search = url[1];

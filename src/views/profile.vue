@@ -94,7 +94,7 @@
 
                 if(fileVerify.value){
                     axios
-                        .post('http://127.0.0.1:8000/api/updatePhoto/1', data).then(function () {
+                        .post('http://127.0.0.1:8000/api/updatePhoto/'+this.loggedUser.id, data).then(function () {
                             //console.log(response.data);
                         }); 
                     photoUpdated = true;
@@ -159,7 +159,7 @@
         background: red;
     }
     .boxProfile{
-        margin-top: 70px;
+        margin-top: 80px;
     }
     .flash{
         text-align: center;

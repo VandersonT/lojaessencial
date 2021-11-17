@@ -119,7 +119,6 @@
                 loggedUser: [],
                 products: [],
                 loading: true,
-                //datas to filter
                 search: '',
                 priceOrder: 'Normal',
                 productToSearch: ['calça', 'sapato', 'blusa', 'camisa', 'jaqueta'],
@@ -132,7 +131,7 @@
                 var url = window.location.href;
                 url = url.split('?search=');
                 this.search = url[1];
-
+                
                 if(this.search != undefined){
                     this.search = this.search.replace("%20", " ");
                 }
