@@ -13,8 +13,8 @@
 
                 <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
                     <img v-on:click="openProdcut(product.id)" :src="product.cover" />
-                    <p class="productDescription">{{product.description}}</p>
-                    <p class="productPrice">R$ {{product.price.toFixed(2)}}</p>
+                    <p v-on:click="openProdcut(product.id)" class="productDescription">{{product.name}}</p>
+                    <p v-on:click="openProdcut(product.id)" class="productPrice">R$ {{product.price}},00</p>
                     <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
                     <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>
@@ -329,6 +329,12 @@
         margin: 20px;
         text-align: center;
         font-family: Arial,tahoma,verdana;
+        border: 1px solid rgb(155, 155, 155);
+        cursor: pointer;
+    }
+
+    .productSingle:hover{
+        border: 1px solid rgb(247, 72, 3);
     }
 
     .empty{
@@ -338,25 +344,33 @@
     }
 
     .productSingle img{
-        width: auto;
+        width: 100%;
         max-width: 100%;
-        height: 165px;
+        height: 170px;
         margin-bottom: 20px;
         cursor: pointer;
+        border-bottom: 1px solid rgb(182, 182, 182);
     }
 
     .productDescription{
-        color: #3d3d3d;
+        color: #5f5f5f;
         margin-bottom: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 12px;
+        cursor: pointer;
+        padding: 0 5px;
+        max-width: 70ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .productPrice{
         font-size: 16px;
         color:#197ABB;
         font-weight: bold;
+        cursor: pointer;
     }
 
     /*Promotion*/

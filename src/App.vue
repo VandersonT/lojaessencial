@@ -69,7 +69,6 @@
   .icon{
       border: 0;
       margin-top: 10px;
-      padding: 8px 5px;
       border-radius: 5px;
       text-transform: uppercase;
       color: #272727;

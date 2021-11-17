@@ -15,7 +15,7 @@
                         <button v-on:click="more(info.id, index)">+</button>
                     </div>
                     <div class="priceSingle">
-                        R$ {{info.price.toFixed(2)}}
+                        R$ {{info.price}},00
                     </div>
                 </div>
 

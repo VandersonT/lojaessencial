@@ -22,7 +22,7 @@
                     </div>
                     
                     <div class="showProductPrice">
-                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}}</span>
+                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}},00</span>
                     </div>
                     
                     <select>
@@ -318,9 +318,11 @@
     .miniImage{
         width: 110px;
         height: 100%;
-        margin-right: 10px;
         border-right: 1px solid rgb(165, 165, 165);
         cursor: pointer;
+    }
+    .miniImage:hover{
+        border: 1px solid rgb(247, 72, 3) !important;
     }
 
     .miniImage:last-child{
@@ -500,6 +502,9 @@
         background: rgb(71, 71, 71);
         border-right: 1px solid rgb(143, 143, 143);
         cursor: pointer;
+    }
+    .similarProductImage:hover{
+        border: 1px solid rgb(247, 72, 3);
     }
 
     @media screen and (max-width: 1130px){
