@@ -74,7 +74,7 @@
 
                 //Envia as informações para o back-end
                 axios
-                .post('http://127.0.0.1:8000/api/users',{
+                .post('https://api.lojaessencial.ga/api/users',{
                     'name': this.name,
                     'email': this.email,
                     'password': this.password,
@@ -95,7 +95,7 @@
         },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
@@ -203,9 +203,61 @@
     }
 
     @media screen and (max-width: 630px){
-       .boxLogin{
+       .boxRegister{
             margin-top: 96px;
             height: calc(100vh - 96px);
+        }
+        .register{
+            width: 70%;
+            margin-top: 10vh;
+        }
+        .iconInput{
+            right: 44% !important;
+            bottom: 26px !important;
+            font-size: 15px !important;
+        }
+        .register input:not(input[type=checkbox]){
+            font-size: 14px;
+        }
+        .register h1{
+            font-size: 17px;
+        }
+        .register h1 i{
+            font-size: 14px;
+        }
+        .register button{
+            font-size: 10px;
+        }
+        .link2{
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 450px){
+        .register{
+            width: 80%;
+        }
+        .register input:not(input[type=checkbox]){
+            padding-left: 29px;
+        }
+    }
+
+    @media screen and (max-width: 350px){
+        .register{
+            width: 96%;
+        }
+    }
+
+    @media screen and (max-height: 600px){
+        .register{
+            margin-top: 2vh;
+        }
+    }
+
+    @media screen and (max-height: 530px){
+        .boxRegister{
+            height: auto;
+            padding-bottom: 20px;
         }
     }
 </style>

@@ -15,7 +15,7 @@
                     <p>Manter conectado</p>
                 </div>-->
                 <button v-on:click="login()">Entrar</button>
-                <router-link class="link" to="/cadastro">Ainda não tem uma conta?</router-link>
+                <router-link class="link link2" to="/cadastro">Ainda não tem uma conta?</router-link>
             </div>
         </section>
     </div>
@@ -56,7 +56,7 @@
                 }
 
                 axios
-                    .post('http://127.0.0.1:8000/api/usersLogin',{
+                    .post('https://api.lojaessencial.ga/api/usersLogin',{
                         'email': this.email,
                         'password': this.password
                     })
@@ -75,7 +75,7 @@
         },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
@@ -186,6 +186,51 @@
        .boxLogin{
             margin-top: 96px;
             height: calc(100vh - 96px);
+        }
+        .login{
+            width: 70%;
+            margin-top: 10vh;
+        }
+        .iconInput{
+            right: 44% !important;
+            bottom: 26px !important;
+            font-size: 15px !important;
+        }
+        .login input:not(input[type=checkbox]){
+            font-size: 14px;
+        }
+        .login h1{
+            font-size: 17px;
+        }
+        .login h1 i{
+            font-size: 14px;
+        }
+        .login button{
+            font-size: 10px;
+        }
+        .link2{
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 450px){
+        .login{
+            width: 80%;
+        }
+        .login input:not(input[type=checkbox]){
+            padding-left: 29px;
+        }
+    }
+
+    @media screen and (max-width: 350px){
+        .login{
+            width: 96%;
+        }
+    }
+
+    @media screen and (max-height: 530px){
+        .boxLogin{
+            height: auto;
         }
     }
 </style>

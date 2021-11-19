@@ -165,7 +165,7 @@
                 if(this.logged){
                     
                     axios
-                        .post('http://127.0.0.1:8000/api/addFavorite',{
+                        .post('https://api.lojaessencial.ga/api/addFavorite',{
                             'id': this.loggedUser.id,
                             'productid': productId
                         })
@@ -184,7 +184,7 @@
             addToKart: function(productId){
                 if(this.logged){
                     axios
-                        .post('http://127.0.0.1:8000/api/addToKart',{
+                        .post('https://api.lojaessencial.ga/api/addToKart',{
                             'id': this.loggedUser.id,
                             'productid': productId
                         })
@@ -205,7 +205,7 @@
             window.scrollTo(0, 0)
             /*Get specific cloth*/
             axios
-                .get('http://127.0.0.1:8000/api/cloth/'+this.$route.params.id)
+                .get('https://api.lojaessencial.ga/api/cloth/'+this.$route.params.id)
                 .then((r)=>{
 
                     if(r.data.error){
@@ -222,14 +222,14 @@
 
             /*Get all clothes*/
             axios
-                .get('http://127.0.0.1:8000/api/clothes')
+                .get('https://api.lojaessencial.ga/api/clothes')
                 .then((r)=>{
                     this.moreProducts = r.data.products;
                 });
 
             /*GetUser*/
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{

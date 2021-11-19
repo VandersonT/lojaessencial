@@ -19,8 +19,12 @@
                     <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
                 </div>
 
-                <p v-show="products.length < 1" class="empty">
+                <p v-show="products.length < 1 && !loading" class="empty">
                     Não temos nenhum produto cadastrado ainda <i class="far fa-frown"></i>
+                </p>
+
+                <p v-show="loading" class="loadingProducts">
+                    Carregando...
                 </p>
 
             </div>
@@ -119,7 +123,8 @@
                 userSendEmail: false,
                 userSentAnInvalidEmail: false,
                 products: [],
-                getUserEmail: ''
+                getUserEmail: '',
+                loading: true
             }
         },
         methods:{
@@ -147,7 +152,7 @@
                 if(this.logged){
                     
                     axios
-                        .post('http://127.0.0.1:8000/api/addFavorite',{
+                        .post('https://api.lojaessencial.ga/api/addFavorite',{
                             'id': this.loggedUser.id,
                             'productid': productId
                         })
@@ -167,7 +172,7 @@
                 if(this.logged){
                     
                     axios
-                        .post('http://127.0.0.1:8000/api/addToKart',{
+                        .post('https://api.lojaessencial.ga/api/addToKart',{
                             'id': this.loggedUser.id,
                             'productid': productId
                         })
@@ -186,13 +191,16 @@
         },
         beforeCreate(){
             axios
-                .get('http://127.0.0.1:8000/api/clothes')
+                .get('https://api.lojaessencial.ga/api/clothes')
                 .then((r)=>{
                     this.products = r.data.products;
+                })
+                .finally(()=>{
+                    this.loading = false;
                 });
 
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
@@ -279,7 +287,6 @@
         background-image: url('../assets/images/mainBanner.jpg');
         background-position: center;
         background-size: cover;
-        border-bottom: 1px solid rgb(122, 122, 122);
     }
 
     .mainPhrase{
@@ -748,6 +755,12 @@
         }
         .empty{
             font-size: 14px;
+        }
+        .opinionsSingle--author{
+            font-size: 13px;
+        }
+        .opinionsSingle--message{
+            font-size: 11px;
         }
     }
 </style>

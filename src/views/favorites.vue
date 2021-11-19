@@ -51,12 +51,12 @@
 
                 this.product.splice(index, 1)
                 axios
-                    .delete('http://127.0.0.1:8000/api/favorite/'+id)
+                    .delete('https://api.lojaessencial.ga/api/favorite/'+id)
             },
             addToKart: function(productId){
                 if(this.logged){
                     axios
-                        .post('http://127.0.0.1:8000/api/addToKart',{
+                        .post('https://api.lojaessencial.ga/api/addToKart',{
                             'id': this.loggedUser.id,
                             'productid': productId
                         })
@@ -76,7 +76,7 @@
         beforeCreate(){
             /*Get user*/
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
@@ -91,7 +91,7 @@
                 })
                 .finally(()=>{
                     axios
-                        .get('http://127.0.0.1:8000/api/favorites/'+this.loggedUser.id)
+                        .get('https://api.lojaessencial.ga/api/favorites/'+this.loggedUser.id)
                         .then((r)=>{
                             this.product = r.data.favorites;
                         })

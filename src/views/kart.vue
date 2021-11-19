@@ -72,7 +72,7 @@
                 this.product[index].amountWanted = this.product[index].amountWanted + 1;
 
                 axios
-                    .put('http://127.0.0.1:8000/api/kart',{
+                    .put('https://api.lojaessencial.ga/api/kart',{
                         'id': id,
                         'newAmount': this.product[index].amountWanted,
                     });
@@ -90,11 +90,11 @@
                 if(this.product[index].amountWanted < 1){
                     this.product.splice(index, 1);
                     axios
-                        .delete('http://127.0.0.1:8000/api/kart/'+id);
+                        .delete('https://api.lojaessencial.ga/api/kart/'+id);
                 }else{
                     this.product[index].price -= parseInt(this.prices[index]);
                     axios
-                        .put('http://127.0.0.1:8000/api/kart',{
+                        .put('https://api.lojaessencial.ga/api/kart',{
                             'id': id,
                             'newAmount': this.product[index].amountWanted,
                         });
@@ -108,7 +108,7 @@
         beforeCreate(){
             /*Get user*/
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
@@ -123,7 +123,7 @@
                 })
                 .finally(()=>{
                     axios
-                        .get('http://127.0.0.1:8000/api/kart/'+this.loggedUser.id)
+                        .get('https://api.lojaessencial.ga/api/kart/'+this.loggedUser.id)
                         .then((r)=>{
                             this.product = r.data.kart;
                             

@@ -94,14 +94,14 @@
 
                 if(fileVerify.value){
                     axios
-                        .post('http://127.0.0.1:8000/api/updatePhoto/'+this.loggedUser.id, data).then(function () {
+                        .post('https://api.lojaessencial.ga/api/updatePhoto/'+this.loggedUser.id, data).then(function () {
                             //console.log(response.data);
                         }); 
                     photoUpdated = true;
                 }
                 
                 axios
-                    .put('http://127.0.0.1:8000/api/updateProfile', {
+                    .put('https://api.lojaessencial.ga/api/updateProfile', {
                         'id': this.loggedUser.id,
                         'name': this.loggedUser.name,
                         'email': this.loggedUser.email,
@@ -119,7 +119,7 @@
                             this.success = true;
 
                             axios
-                                .post('http://127.0.0.1:8000/api/userAuth',{
+                                .post('https://api.lojaessencial.ga/api/userAuth',{
                                     'currentToken': localStorage.getItem('token')
                                 })
                                 .then((r)=>{
@@ -137,7 +137,7 @@
         },
         beforeCreate(){
             axios
-                .post('http://127.0.0.1:8000/api/userAuth',{
+                .post('https://api.lojaessencial.ga/api/userAuth',{
                     'currentToken': localStorage.getItem('token')
                 })
                 .then((r)=>{
