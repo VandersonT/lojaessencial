@@ -2,10 +2,10 @@
     <div>
         <section class="boxProfile">
             <div v-if="success" class="flash success">
-                <p class="animate__animated animate__flipInX">{{flashMessage}}</p>
+                <p>{{flashMessage}}</p>
             </div>
             <div v-if="error" class="flash error">
-                <p class="animate__animated animate__flipInX">{{flashMessage}}</p>
+                <p>{{flashMessage}}</p>
             </div>
             <div class="profile">
                 <div class="section1">
@@ -38,23 +38,12 @@
                                 Mostrar senha
                             </div>
                         </div>
-                        <!--<div class="fieldSingle">
-                            <p>Cep:</p>
-                            <input type="text" />
-                        </div>
-                        <div class="fieldSingle">
-                            <p>Cidade:</p>
-                            <input type="text" />
-                        </div>
-                        <div class="fieldSingle">
-                            <p>Endereço:</p>
-                            <input type="text" />
-                        </div>-->
                     </div>
                     <div class="boxButtons">
                         <button v-on:click="goBack()" class="return">Voltar</button>
                         <button v-on:click="saveChanges()" class="black">Salvar Alterações</button>
                     </div>
+                    <p v-show="saving" class="waitToSave">Salvando...</p>
                 </div>
             </div>
         </section>
@@ -77,7 +66,8 @@
                 flashMessage: '',
                 showPass: false,
                 currentPass: '',
-                newPass: ''
+                newPass: '',
+                saving: false
             }
         },
         methods:{
@@ -85,6 +75,7 @@
                 window.history.back();
             },
             saveChanges: function(){
+                this.saving = true;
                 let data = new FormData();
 
                 data.append('file', document.getElementById('file').files[0]);
@@ -113,6 +104,8 @@
                             this.flashMessage = r.data.error;
                             this.success = false;
                             this.error = true;
+                            window.scrollTo({top: 0});
+                            this.saving = false;
                         }else{
                             this.flashMessage = 'Seu perfil foi atualizado com sucesso!';
                             this.error = false;
@@ -130,7 +123,11 @@
                                         this.loggedUser = r.data.loggedUser;
                                         this.logged = r.data.logged;
                                     }
-                                });
+                                })
+                                .finally(()=>{
+                                    window.scrollTo({top: 0});
+                                    this.saving = false;
+                                })
                         }
                     });
             }
@@ -171,7 +168,9 @@
         margin: 0 auto;
     }
     .success{
-        background: rgb(6, 224, 6);
+        background: rgb(20, 209, 20);
+        color: white;
+        text-transform: uppercase;
     }
     .error{
         background: rgb(224, 6, 6);
@@ -253,6 +252,9 @@
     .return:active{
         background: #922828 !important;
     }
+    .waitToSave{
+        margin-top: 10px;
+    }
     @media screen and (max-width: 730px){
         .profile{
            flex-direction: column;
@@ -278,6 +280,12 @@
         }
     }
 
+    @media screen and (max-width: 630px){
+        .boxProfile{
+            padding-top: 16px !important;
+        }
+    }
+
     @media screen and (max-width: 430px){
         .fields{
             width: 100%;
@@ -294,6 +302,15 @@
             font-size: 13px;
         }
         .flash p{
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 330px){
+        .flash p{
+            font-size: 11.5px;
+        }
+        .waitToSave{
             font-size: 14px;
         }
     }

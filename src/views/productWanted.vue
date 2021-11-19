@@ -349,12 +349,19 @@
         }
     }
 
-     @media screen and (max-width: 700px){
+    @media screen and (max-width: 700px){
         .priceFilter{
             flex-direction: column;
         }
         .boxResults h1{
             font-size: 20px;
         }
-     }
+    }
+
+    @media screen and (max-width: 700px){
+        .loadingProducts{
+            font-size: 12px;
+        }
+    }
+
 </style>

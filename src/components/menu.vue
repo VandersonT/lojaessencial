@@ -296,5 +296,10 @@
             top: 50px;
         }
     }
+    @media screen and (max-width: 350px){
+        .loading{
+            font-size: 12px;
+        }
+    }
     
 </style>
