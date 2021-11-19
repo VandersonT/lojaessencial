@@ -188,16 +188,17 @@
             height: calc(100vh - 96px);
         }
         .login{
-            width: 70%;
+            width: 350px;
             margin-top: 10vh;
         }
         .iconInput{
-            right: 44% !important;
-            bottom: 26px !important;
+            right: 45% !important;
+            bottom: 27px !important;
             font-size: 15px !important;
         }
         .login input:not(input[type=checkbox]){
             font-size: 14px;
+            padding-left: 26px;
         }
         .login h1{
             font-size: 17px;
@@ -215,10 +216,13 @@
 
     @media screen and (max-width: 450px){
         .login{
-            width: 80%;
+            width: 300px;
         }
         .login input:not(input[type=checkbox]){
-            padding-left: 29px;
+            padding-left: 26px;
+        }
+        .iconInput{
+            right: 44% !important;
         }
     }
 
@@ -226,11 +230,31 @@
         .login{
             width: 96%;
         }
+        .boxLogin{
+            height: auto !important;
+            min-height: calc(100vh - 100px);
+        }
+        .login input:not(input[type=checkbox]){
+            padding: 7px;
+            padding-left: 24px;
+        }
+        .iconInput{
+            right: 45% !important;
+            bottom: 22px !important;
+            font-size: 13px !important;
+        }
+        .login button{
+            font-size: 10px;
+            padding: 8px 10px;
+        }
     }
 
-    @media screen and (max-height: 530px){
-        .boxLogin{
-            height: auto;
+    @media screen and (max-width: 300px){
+        .login input:not(input[type=checkbox]){
+            padding-left: 23px !important;
+        }
+        .iconInput{
+            right: 44% !important;
         }
     }
 </style>

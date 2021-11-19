@@ -7,19 +7,19 @@
                 </div>
                 <h1><i class="fas fa-user-tag"></i>Cadastre-se</h1>
                 <input type="text" placeholder="Nome" v-model="name"/>
-                <i class="fas fa-user iconInput"></i>
+                <i class="fas fa-user iconInputR"></i>
                 <input type="email" placeholder="Email" v-model="email"/>
-                <i class="fas fa-envelope iconInput"></i>
+                <i class="fas fa-envelope iconInputR"></i>
                 <input :type="(show) ? 'text' : 'password'" placeholder="Senha" v-model="password"/>
-                <i class="fas fa-lock iconInput"></i>
+                <i class="fas fa-lock iconInputR"></i>
                 <input :type="(show) ? 'text' : 'password'" placeholder="Confirme a senha" v-model="confirmPassword"/>
-                <i class="fas fa-lock iconInput"></i>
+                <i class="fas fa-lock iconInputR"></i>
                 <div class="sameLine">
                     <input type="checkbox" v-on:click="showPassword()" />
                     <p>Mostrar senha</p>
                 </div>
                 <button v-on:click="createAccount()">Registrar</button>
-                <router-link class="link" to="/login">Já possuo uma conta</router-link>
+                <router-link class="link link2" to="/login">Já possuo uma conta</router-link>
             </div>
         </section>
     </div>
@@ -166,7 +166,7 @@
         padding-left: 38px;
     }
 
-    .iconInput{
+    .iconInputR{
         position: relative;
         right: 150px;
         bottom: 31px;
@@ -211,7 +211,7 @@
             width: 70%;
             margin-top: 10vh;
         }
-        .iconInput{
+        .iconInputR{
             right: 44% !important;
             bottom: 26px !important;
             font-size: 15px !important;
@@ -238,7 +238,7 @@
             width: 80%;
         }
         .register input:not(input[type=checkbox]){
-            padding-left: 29px;
+            padding-left: 23px !important;
         }
     }
 
@@ -258,6 +258,21 @@
         .boxRegister{
             height: auto;
             padding-bottom: 20px;
+        }
+        .register input:not(input[type=checkbox]){
+            padding: 7px;
+            padding-left: 20px;
+        }
+        .iconInputR{
+            bottom: 22px !important;
+            font-size: 13px !important;
+        }
+        .register button{
+            margin-top: 10px;
+            padding: 7px 10px;
+        }
+        .sameLine{
+            font-size: 13px;
         }
     }
 </style>

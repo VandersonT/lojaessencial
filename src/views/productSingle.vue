@@ -42,7 +42,7 @@
                         <p><i class="fas fa-truck"></i> Frete gratis</p>
                     </div>
 
-                    <div>
+                    <div class="boxBtn2">
                         <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
                         <button v-on:click="addToKart(product.id)" class="buttonModel1 btnBlue">Adicionar ao carrinho</button>
                     </div>
@@ -575,11 +575,34 @@
             width: 120px;
             height: 120px;
         }
+        .showProdutImages{
+            height: 450px;
+        }
     }
 
     @media screen and (max-width: 400px){
         .title{
             font-size: 17px;
+        }
+        .emptyComments{
+            font-size: 13px;
+        }
+        .makeAComment{
+            padding: 8px 6px;
+            font-size: 11px;
+            border-radius: 5px;
+        }
+        .showProdutImages{
+            height: 380px;
+        }
+    }
+    @media screen and (max-width: 350px){
+        .buttonModel1{
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        .buttonModel1:nth-child(1){
+            margin-right: 0;
         }
     }
 </style>
