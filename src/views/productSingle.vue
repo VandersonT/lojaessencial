@@ -7,7 +7,7 @@
                         <img class="mainImage" :src="currentImage" />
                     </div>
                     <div class="productGallery">
-                        <p v-if="productImages < 1" class="emptyImages" >Este produto não possui mais nenhuma foto.</p>
+                        <p v-if="productImages < 1" class="emptyImages" >Carregando...</p>
                         <div v-else class="scrollGallery">
                             <img v-on:click="viewNewImage(index)" v-for="(info, index) in productImages" v-bind:key="info.id" class="miniImage" :src="info.url"/>
                         </div>
@@ -311,7 +311,7 @@
         color: gray;
         width: 100%;
         line-height: 90px;
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
     }
 
@@ -594,6 +594,9 @@
         }
         .showProdutImages{
             height: 380px;
+        }
+        .infoProduct p{
+            font-size: 13px;
         }
     }
     @media screen and (max-width: 350px){

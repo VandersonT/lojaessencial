@@ -51,7 +51,7 @@
 
                 if (!((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1) && (dominio.lastIndexOf(".") < dominio.length - 1))){
                     this.loginError = true;
-                    this.errorMessage = 'Digite um email valido para podermos prosseguir.';
+                    this.errorMessage = 'O email digitado não é valido.';
                     return false;
                 }
 
@@ -67,7 +67,7 @@
                             this.errorMessage = r.data.error;
                         }else{
                             localStorage.setItem('token', r.data.token);
-                            location.href = document.referrer;
+                            this.$router.push('/')
                         }
                     });
 
@@ -183,6 +183,9 @@
     }
 
     @media screen and (max-width: 630px){
+        .flashError{
+            font-size: 13px;
+        }
        .boxLogin{
             margin-top: 96px;
             height: calc(100vh - 96px);

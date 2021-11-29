@@ -58,7 +58,7 @@
                 //Verifica se as senhas batem
                 if(this.password != this.confirmPassword){
                     this.registerError = true;
-                    this.errorMessage = 'A senha e a confirmação estão diferentes.';
+                    this.errorMessage = 'A senha e a confirmação não batem.';
                     return false;
                 }
 
@@ -68,7 +68,7 @@
 
                 if (!((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1) && (dominio.lastIndexOf(".") < dominio.length - 1))){
                     this.registerError = true;
-                    this.errorMessage = 'Digite um email valido para podermos prosseguir.';
+                    this.errorMessage = 'O email digitado não é valido.';
                     return false
                 }
 

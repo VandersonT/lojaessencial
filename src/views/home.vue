@@ -89,10 +89,10 @@
                 <div class="contacts">
                     <h2>Contatos</h2>
                     <p><i class="fas fa-map-marker-alt"></i> Essecial,praça zeferino, 162, centro, são joão</p>
-                    <p><i class="fas fa-envelope"></i> lojaessencial@gmail.com</p>
-                    <p><i class="fas fa-phone-alt"></i> +55 (33)8861-7281</p>
-                    <a href=""><p><i class="fab fa-instagram"></i> Essencial.mv2</p></a>
-                    <a href=""><p><i class="fab fa-facebook-f"></i> Essencial.mv2</p></a>
+                    <p><i class="fas fa-envelope"></i> teste@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +99 (99)9999-9999</p>
+                    <a href=""><p><i class="fab fa-instagram"></i> nomeaqui</p></a>
+                    <a href=""><p><i class="fab fa-facebook-f"></i> nomeaqui</p></a>
                 </div>
                 <div class="businessHours">
                     <h2>Funcionamento</h2>

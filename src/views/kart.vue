@@ -40,7 +40,7 @@
             </div>
 
             <div class="boxBtn">
-                <button class="btnBuy" onClick="alert('Prezado cliente, lamentamos, mas desabilitamos temporariamente a opção de compras!!! Para realizar a compra nos chame pelo whatsapp +55 (33)8861-7281')">Finalizar compra</button>
+                <button class="btnBuy" onClick="alert('A opção de compras está desabilitada temporariamente!">Finalizar compra</button>
             </div>
         </section>
     </div>
