@@ -1,7 +1,12 @@
 <template>
     <div>
         <section class="boxProductsWanted">
-            <div class="boxFilter">
+
+            <button @click="toggleFilter" class="toggleFilter">
+                {{showFilter ? 'Remover Filtro' : 'Mostrar Filtro'}}
+            </button>
+
+            <div v-if="showFilter" class="boxFilter">
                 <h1>Filtro</h1>
                 
                 <div class="priceFilter">
@@ -87,12 +92,17 @@
             <div class="boxResults">
                 <h1>Resultados para {{search}}:</h1>
                 <div class="showCaseFavorites">
-                    <div v-show="products.length > 0 && !loading" v-for="product in products" v-bind:key="product.id" class="productSingle">
+                    
+                    <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
                         <img v-on:click="openProdcut(product.id)" :src="product.cover" />
-                        <p class="productDescription">{{product.name}}</p>
-                        <p class="productPrice">R$ {{product.price}},00</p>
+                        <p v-on:click="openProdcut(product.id)" class="productName">{{product.name}}</p>
+                        <p class="sex">{{product.sex}}</p>
+                        <p class="productPrice">R$ {{(product.price).toFixed(2).replace('.', ',')}}</p>
+                        
+                        <!--
                         <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
                         <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
+                        -->
                     </div>
 
                     <p v-show="products.length < 1 && !loading" class="empty">
@@ -107,12 +117,10 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
 
     export default {
-        components: {
-            
-        },
+
         data(){
             return{
                 logged: false,
@@ -123,11 +131,16 @@
                 priceOrder: 'Normal',
                 productToSearch: ['calça', 'sapato', 'blusa', 'camisa', 'jaqueta'],
                 gender: 'todos',
-                ageToSearch: ['bebês', 'crianças', 'adolecentes', 'adultos']
+                ageToSearch: ['bebês', 'crianças', 'adolecentes', 'adultos'],
+                showFilter: false
             }
         },
         methods:{
+            toggleFilter: function(){
+                this.showFilter = !this.showFilter
+            },
             getProductSearched: function(){
+
                 var url = window.location.href;
                 url = url.split('?search=');
                 this.search = url[1];
@@ -227,18 +240,35 @@
     .boxProductsWanted{
         margin-top: 80px;
         display: flex;
+        flex-direction: column;
     }
     .filterOrder h3{
-        text-align: left;
-        padding-left: 20px;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 35px;
     }
+
+    .toggleFilter{
+        font-family: 'Lato', sans-serif;
+        background: rgb(26, 26, 26);
+        border: 0;
+        width: max-content;
+        margin: 0 auto;
+        margin-top: 40px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        color: white;
+        cursor: pointer;
+    }
+
     .boxFilter{
-        width: 350px;
+        width: 100vw;
+        max-width: 100%;
         height: auto;
-        min-height: calc(100vh - 70px);
+        min-height: auto;        
         display: flex;
-        flex-direction: column;
         align-items: center;
+        flex-direction: column;
         padding-bottom: 20px;
         border-right: 1px solid #8a8a8a;
         border-bottom: 1px solid #8a8a8a;
@@ -248,15 +278,16 @@
         font-weight: lighter;
         color: rgb(92, 92, 92);
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 30px;
+        margin-top: 50px;
+        margin-bottom: 0;
+        font-size: 25px;
     }
     .boxFilter h3{
         font-family: Arial,tahoma,verdana;
         font-weight: lighter;
         color: rgb(92, 92, 92);
         margin: 35px 10px 10px 20px;
+        font-size: 17px;
     }
     .boxFilter h3:nth-child(1){
          margin-top: 20px;
@@ -268,9 +299,12 @@
         outline: 0;
         font-size: 15px;
         color: rgb(58, 58, 58);
+        height: 35px;
+        display: flex;
+        flex-direction: column;
     }
     .filterSingle{
-        margin-left: 20px;
+        margin-left: 50px;
     }
 
     .boxFilter button{
@@ -286,15 +320,20 @@
     }
 
     .boxResults{
-        width: calc(100vw - 350px);
         padding: 20px;
+        width: 100%;
+        margin-bottom: 50px;
     }
     .boxResults h1{
-        color: #858585;
-        font-family: Arial,tahoma,verdana;
+        color: #1d1d1d;
+        font-family: 'Lato', sans-serif;
         font-weight: lighter;
         margin-top: 10px;
         margin-bottom: 20px;
+    }
+    .priceFilter{
+        display: flex;
+        flex-direction: row;
     }
     /*A página que exibe os produtos que foram encontrados usa a mesma estrutura html/css que a página home: .
     Então, para não repetir css o css dele é compartilhado e se encontra em style da página home*/
@@ -305,48 +344,6 @@
         display: flex;
         justify-content: space-around;
         flex-wrap:wrap;
-    }
-
-    @media screen and (max-width: 900px){
-        .filterOrder h3{
-            text-align: center;
-            padding-left: 0;
-            padding-right: 35px;
-        }
-        .boxProductsWanted{
-            flex-direction: column;
-        }
-        .boxResults{
-            width: 100%;
-            margin-bottom: 50px;
-        }
-        .boxFilter{
-            width: 100vw;
-            max-width: 100%;
-            height: auto;
-            flex-direction: flex;
-            min-height: auto;
-        }
-        .priceFilter{
-            display: flex;
-            flex-direction: row;
-        }
-        .boxFilter select{
-            height: 35px;
-            display: flex;
-            flex-direction: column;
-        }
-        .filterSingle{
-            margin-left: 50px;
-        }
-        .boxFilter h1{
-            margin-top: 50px;
-            margin-bottom: 0;
-            font-size: 25px;
-        }
-        .boxFilter h3{
-            font-size: 17px;
-        }
     }
 
     @media screen and (max-width: 700px){

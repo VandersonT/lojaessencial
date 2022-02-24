@@ -16,13 +16,12 @@
                 <div class="showProdutInfo">
                     <h1>{{product.name}}</h1>
                     
-                    <div class="showProductDescription">
-                        <b class="subTitleProduct">Descrição:</b>
-                        <p>{{product.description}}</p>
-                    </div>
-                    
                     <div class="showProductPrice">
-                        <b class="subTitleProduct">Preço:</b><span> R$ {{product.price}},00</span>
+                        <span><span class="oldPrice">R$ {{(parseInt(product.price) + 79).toFixed(2).replace('.', ',')}}</span> R$ {{parseInt(product.price).toFixed(2).replace('.', ',')}}</span>
+                    </div>
+
+                    <div class="showProductDescription">
+                        <p>{{product.description}}</p>
                     </div>
                     
                     <select>
@@ -43,19 +42,19 @@
                     </div>
 
                     <div class="boxBtn2">
-                        <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Adicionar aos favoritos</button>
+                        <button v-on:click="addToFavorite(product.id)" class="buttonModel1 btnOrange">Salvar nos favoritos</button>
                         <button v-on:click="addToKart(product.id)" class="buttonModel1 btnBlue">Adicionar ao carrinho</button>
                     </div>
                     
                 </div>
             </div>
             <div class="infoProduct">
-                <h1 class="title">Informações do produto:</h1>
+                <h1 class="title">Informações do Produto:</h1>
                 <p>{{product.info}}</p>
             </div>
 
             <div class="productComments">
-                <h1 class="title">Avaliações dos clientes:</h1>
+                <h1 class="title">Avaliações dos Clientes:</h1>
 
                 <div class="boxCommentsSingle">
                     
@@ -70,7 +69,7 @@
                     </div>
 
                     <p v-show="comments.length < 1" class="emptyComments">
-                        Nenhum comentário ainda!
+                        Nenhuma avaliação ainda!
                     </p>
 
                 </div>
@@ -94,11 +93,11 @@
             <div class="boxInfo">
                 <div class="contacts">
                     <h2>Contatos</h2>
-                    <p><i class="fas fa-map-marker-alt"></i> Essecial,praça zeferino, 162, centro, são joão</p>
-                    <p><i class="fas fa-envelope"></i> lojaessencial@gmail.com</p>
-                    <p><i class="fas fa-phone-alt"></i> +55 (33)8861-7281</p>
-                    <a href=""><p><i class="fab fa-instagram"></i> Essencial.mv2</p></a>
-                    <a href=""><p><i class="fab fa-facebook-f"></i> Essencial.mv2</p></a>
+                    <p><i class="fas fa-map-marker-alt"></i> Loja Essecial, praça X, 999, centro, Cidade X</p>
+                    <p><i class="fas fa-envelope"></i> exemplo@exemplo.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +99 (99)9999-9999</p>
+                    <a href=""><p><i class="fab fa-instagram"></i> nomeaqui</p></a>
+                    <a href=""><p><i class="fab fa-facebook-f"></i> nomeaqui</p></a>
                 </div>
                 <div class="businessHours">
                     <h2>Funcionamento</h2>
@@ -245,10 +244,14 @@
 </script>
 
 <style>
+    body{
+        background: #eaeef1;
+    }
     .boxProdutSingle{
         width: 95%;
         margin: 0 auto;
-        margin-top: 75px;
+        /*margin-top: 75px;*/
+        margin-top: 160px;
     }
 
     .showProdut{
@@ -259,7 +262,7 @@
         width: 460px;
         height: 500px;
         text-align: center;
-        border: 1px solid rgb(165, 165, 165);
+        border: 1px solid rgb(192, 192, 192);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -274,6 +277,7 @@
     .mainImage{
         width: 100%;
         height: 100%;
+        background: rgb(243, 243, 243);
     }
 
     .zoom{
@@ -297,8 +301,9 @@
     .productGallery{
         width: 100%;
         height: 100px;
-        border-top: 1px solid rgb(165, 165, 165);
+        border-top: 1px solid rgb(192, 192, 192);
         overflow-x: auto;
+        background: rgb(243, 243, 243);
     }
 
     .scrollGallery{
@@ -318,47 +323,46 @@
     .miniImage{
         width: 110px;
         height: 100%;
-        border-right: 1px solid rgb(165, 165, 165);
+        border-right: 1px solid rgb(192, 192, 192);
         cursor: pointer;
     }
     .miniImage:hover{
-        border: 1px solid rgb(247, 72, 3) !important;
+        border: 1px solid rgb(167, 167, 167) !important;
     }
 
     .miniImage:last-child{
         border-right: 0;
     }
 
-    .subTitleProduct{
-        font-weight: lighter;
-        color: #292929;
-        font-size: 20px;
-    }
-
     .showProdutInfo{
         width: calc(100% - 460px);
         padding-left: 20px;
-        border: 1px solid rgb(165, 165, 165);
+        background: rgb(243, 243, 243);
+        border: 1px solid rgb(192, 192, 192);
         border-left: 0;
     }
 
     .showProdutInfo h1{
         font-weight: lighter;
-        font-family: Arial,tahoma,verdana;
-        text-align: center;
+        font-family: 'Lato', sans-serif;
         margin-top: 25px;
-        color: #4e4e4e;
-        font-size: 21px;
+        color: #000000;
+        font-size: 30px;
     }
 
     .showProductPrice,
     .showProductDescription{
         margin: 20px 0;
+        font-family: 'Lato', sans-serif;
+        font-size: 24px;
+        color: #333333;
     }
 
     .showProductDescription p{
         width: 100%;
-        color: #4e4e4e;
+        color: #313131;
+        font-size: 16px;
+        font-family: 'Lato', sans-serif;
     }
 
     .showProdutInfo select{
@@ -370,9 +374,16 @@
         margin-bottom: 20px;
     }
 
+    .oldPrice{
+        text-decoration: line-through;
+        color: rgb(165, 165, 165);
+    }
+
     .setAmount,
     .calcFrete{
         margin: 20px 0;
+        font-family: 'Lato', sans-serif;
+        color: rgb(58, 58, 58);
     }
     
     .free{
@@ -397,6 +408,7 @@
         text-transform: uppercase;
         cursor: pointer;
         background: rgb(36, 36, 36);
+        margin-top: 20px;
     }
 
     .buttonModel1:nth-child(1){
@@ -405,13 +417,11 @@
 
     .btnBlue{
         background: rgb(0, 162, 255);
-        font-weight: bold;
+        color: rgb(255, 255, 255);
     }
 
     .btnOrange{
-        background: rgb(247, 143, 23);
-        color: rgb(255, 255, 255);
-        font-weight: bold;
+        background: #FF4500;
     }
 
     /*Info product*/
@@ -422,53 +432,57 @@
     }
 
     .title{
-        text-transform: capitalize;
         font-weight: lighter;
-        font-size: 22px;
-        color: #666666;
-        margin-top: 60px;
+        font-size: 24px;
+        color: #141414;
+        margin-top: 20px;
         margin-bottom: 20px;
-        font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(179, 179, 179);
+        font-family: 'Lato', sans-serif;
+        border-top: 1px solid rgb(192, 192, 192);
+        padding-top: 40px;
     }
 
     .infoProduct p{
         width: 90%;
-        color: #777777;
-        font-size: 17px;
+        color: #303030;
+        font-size: 16px;
+        font-family: 'Lato', sans-serif;
     }
 
     /*Product Comments*/
     .emptyComments{
-        color: rgb(77, 77, 77);
-        font-size: 18px;
+        color: rgb(46, 46, 46);
+        font-size: 16px;
+        font-family: 'Lato', sans-serif;
     }
     .makeAComment{
         padding: 10px 10px;
-        border: 1px solid rgb(182, 182, 182);
+        border: 0;
         cursor: pointer;
         background: rgb(0, 152, 240);
         color: white; 
         margin-bottom: 20px;
-        border-radius: 10px;
+        border-radius: 5px;
     }
     .boxCommentsSingle{
         margin-bottom: 30px;
     }
     .commentSingle{
-        border: 1px solid rgb(165, 165, 165);
+        border: 1px solid rgb(209, 209, 209);
         margin-bottom: 10px;
         padding: 10px;
+        font-family: 'Lato', sans-serif;
     }
     .infoComment{
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        font-size: 15px;
     }
 
     .infoComment h1{
         margin-right: 10px;
-        font-family: Arial,tahoma,verdana;
+        font-family: 'Lato', sans-serif;
         font-weight: lighter;
         font-size: 18px;
         color: #0084ff;
@@ -485,8 +499,8 @@
     .userMessage{
         width: 800px;
         margin-bottom: 10px;
-        color: #777777;
-        font-size: 17px;
+        color: #2b2b2b;
+        font-size: 16px;
     }
 
     /*Similar Product*/
@@ -504,17 +518,13 @@
         cursor: pointer;
     }
     .similarProductImage:hover{
-        border: 1px solid rgb(247, 72, 3);
+        border: 1px solid rgb(167, 167, 167);
     }
 
     @media screen and (max-width: 1130px){
         .showProdutInfo h1{
             font-size: 16px;
             text-align: left;
-            color: black;
-        }
-        .subTitleProduct{
-            font-size: 16px;
             color: black;
         }
         .showProductDescription p{

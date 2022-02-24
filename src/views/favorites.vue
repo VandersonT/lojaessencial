@@ -3,15 +3,20 @@
         <section class="boxFavorites">
             <h1><i class="far fa-heart"></i> Favoritos</h1>
             <div class="showCase">
-                <div v-show="product.length > 0 && !loading" v-for="(info, index) in product" v-bind:key="info.id" class="productSingle">
-                    <img v-on:click="openProdcut(info.productId)" :src="info.cover" />
-                    <p class="productDescription">{{info.description}}</p>
-                    <p class="productPrice">R$ {{info.price}},00</p>
-                    <button v-on:click="deleteFavorite(info.id, index)" class="icon delete"><i class="fas fa-trash"></i></button>
-                    <button v-on:click="addToKart(info.productId)" class="icon"><i class="fas fa-shopping-cart"></i></button>
+                
+                <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
+                    <img v-on:click="openProdcut(product.id)" :src="product.cover" />
+                    <p v-on:click="openProdcut(product.id)" class="productName">{{product.name}}</p>
+                    <p class="sex">{{product.sex}}</p>
+                    <p class="productPrice">R$ {{(product.price).toFixed(2).replace('.', ',')}}</p>
+                    
+                    <!--
+                    <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
+                    <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
+                    -->
                 </div>
 
-                <p v-show="product.length < 1 && !loading" class="empty">
+                <p v-show="products.length < 1 && !loading" class="empty">
                     Você não tem nada nos favoritos.
                 </p>
 
@@ -35,7 +40,7 @@
             return {
                 logged: false,
                 loggedUser: [],
-                product: [],
+                products: [],
                 loading: true
             }
         },
@@ -93,7 +98,7 @@
                     axios
                         .get('https://api.lojaessencial.ga/api/favorites/'+this.loggedUser.id)
                         .then((r)=>{
-                            this.product = r.data.favorites;
+                            this.products = r.data.favorites;
                         })
                         .finally(()=>{
                             this.loading = false;

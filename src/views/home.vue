@@ -7,16 +7,21 @@
             </h1>
         </section>
         <section class="boxProducts">
-            <h1><i class="fab fa-battle-net"></i> Nossos Produtos</h1>
+            <h1>Nossos Produtos</h1>
+            <div class="textDetail"></div>
 
             <div class="showCase">
 
                 <div v-show="products.length > 0" v-for="product in products" v-bind:key="product.id" class="productSingle">
                     <img v-on:click="openProdcut(product.id)" :src="product.cover" />
-                    <p v-on:click="openProdcut(product.id)" class="productDescription">{{product.name}}</p>
-                    <p v-on:click="openProdcut(product.id)" class="productPrice">R$ {{product.price}},00</p>
+                    <p v-on:click="openProdcut(product.id)" class="productName">{{product.name}}</p>
+                    <p class="sex">{{product.sex}}</p>
+                    <p class="productPrice">R$ {{(product.price).toFixed(2).replace('.', ',')}}</p>
+                    
+                    <!--
                     <button v-on:click="addToFavorite(product.id)" class="icon save"><i class="fas fa-heart"></i></button>
                     <button v-on:click="addToKart(product.id)" class="icon"><i class="fas fa-shopping-cart"></i></button>
+                    -->
                 </div>
 
                 <p v-show="products.length < 1 && !loading" class="empty">
@@ -40,7 +45,9 @@
         </section>
 
         <section class="userOpinions">
-            <h1 class="userOpinions--title"><i class="fas fa-user-friends"></i> Depoimentos</h1>
+            <h1 class="userOpinions--title">Depoimentos</h1>
+            <div class="textDetail"></div>
+
             <div class="boxOpinions">
                 <div class="opinionsSingle animate__animated animate__fadeIn">
                     <img src="../assets/images/no-picture.png" />
@@ -88,8 +95,8 @@
             <div class="boxInfo">
                 <div class="contacts">
                     <h2>Contatos</h2>
-                    <p><i class="fas fa-map-marker-alt"></i> Essecial,praça zeferino, 162, centro, são joão</p>
-                    <p><i class="fas fa-envelope"></i> teste@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Loja Essecial, praça X, 999, centro, Cidade X</p>
+                    <p><i class="fas fa-envelope"></i> exemplo@exemplo.com</p>
                     <p><i class="fas fa-phone-alt"></i> +99 (99)9999-9999</p>
                     <a href=""><p><i class="fab fa-instagram"></i> nomeaqui</p></a>
                     <a href=""><p><i class="fab fa-facebook-f"></i> nomeaqui</p></a>
@@ -277,26 +284,27 @@
 
 <style>
     body{
-        background: #dbdbdb;
+        background: #ffffff !important;
     }
     .boxMainImage{
         width: 100vw;
         max-width: 100%;
-        height: 730px;
+        height: 100vh !important;
         margin-top: 80px;
-        background-image: url('../assets/images/mainBanner.jpg');
+        background-image: url('../assets/images/banner.png');
         background-position: center;
         background-size: cover;
+        border-bottom: 1px solid rgb(194, 194, 194);
     }
 
     .mainPhrase{
-        width: 550px;
+        width: 570px !important;
         padding: 5px;
         position: relative;
         top: 40%;
-        left: 12%;
+        left: 5%;
         color: #202020;
-        font-size: 40px;
+        font-size: 40px !important;
         font-family: 'Dancing Script', cursive;
         text-transform: capitalize;
         transform: rotate(-5deg);
@@ -309,18 +317,26 @@
     /*Nossos Produtos*/
     .boxProducts{
         width: 90%;
-        padding-top: 50px;
+        padding-top: 100px;
         margin: 0 auto;
         padding-bottom: 90px;
     }
+    
+    .userOpinions--title,
     .boxProducts h1{
         text-transform: capitalize;
-        font-weight: lighter;
+        font-weight: 400;
         font-size: 28px;
-        color: #4e4e4e;
+        color: #141414;
         margin-bottom: 10px;
-        font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(122, 122, 122);
+        font-family: 'Lato', sans-serif;
+        text-align: center;
+    }
+
+    .textDetail{
+        width: 70px !important;
+        margin: 0 auto;
+        border-top: 2px solid #066AFF;
     }
 
     .showCase{
@@ -328,20 +344,14 @@
         display: flex;
         justify-content: space-around;
         flex-wrap:wrap;
+        margin-top: 50px;
     }
 
     .productSingle{
         width: 200px;
-        height: 300px;
         margin: 20px;
-        text-align: center;
+        margin-bottom: 70px;
         font-family: Arial,tahoma,verdana;
-        border: 1px solid rgb(155, 155, 155);
-        cursor: pointer;
-    }
-
-    .productSingle:hover{
-        border: 1px solid rgb(247, 72, 3);
     }
 
     .empty{
@@ -354,38 +364,51 @@
         width: 100%;
         max-width: 100%;
         height: 170px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         cursor: pointer;
-        border-bottom: 1px solid rgb(182, 182, 182);
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid rgb(211, 211, 211);
     }
 
-    .productDescription{
-        color: #5f5f5f;
-        margin-bottom: 10px;
-        font-size: 14px;
-        font-weight: normal;
-        line-height: 12px;
+    .productName{
+        color: #000000;
+        font-size: 15px;
+        font-weight:500;
         cursor: pointer;
-        padding: 0 5px;
-        max-width: 70ch;
+        /*max-width: 70ch;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: nowrap;*/
+        font-family: 'Lato', sans-serif;
+        padding-bottom: 5px;
+        text-align: left !important;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .sex{
+        text-align: left !important;
+        color: #838383;
+        margin-bottom: 10px;
+        font-size: 14px;
+        text-transform: capitalize;
     }
 
     .productPrice{
-        font-size: 16px;
-        color:#197ABB;
-        font-weight: bold;
-        cursor: pointer;
+        font-size: 14px;
+        color:#141414;
+        font-weight: 400;
+        font-family: 'Lato', sans-serif;
     }
 
     /*Promotion*/
     .boxPromotion{
-        width: 100vw;
+        width: 95vw;
         max-width: 100%;
         height: 600px;
-        background-image: url('../assets/images/banner2Home.jpg');
+        margin: 0 auto;
+        background-image: url('../assets/images/discount.png');
         background-position: center;
         background-size: cover;
         margin-bottom: 20px;
@@ -413,27 +436,29 @@
     .userOpinions{
         width: 90%;
         margin: 0 auto;
-        margin-top: 60px;
+        margin-top: 80px;
         margin-bottom: 40px;
     }
     .userOpinions--title{
-        margin-top: 30px;
+        margin-top: 100px;
         text-transform: capitalize;
         font-weight: lighter;
         font-size: 28px;
-        color: #4e4e4e;
+        color: #1b1b1b;
         margin-bottom: 10px;
-        font-family: Arial,tahoma,verdana;
-        border-bottom: 1px solid rgb(122, 122, 122);
+        font-family: 'Lato', sans-serif;
     }
     .boxOpinions{
         width: 100%;
         height: 400px;
-        border:1px solid rgb(122, 122, 122);
+        border:1px solid rgb(165, 165, 165);
         display: flex;
+        border-radius: 5px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: linear-gradient(rgb(235, 229, 229), rgb(226, 226, 226));
+        margin-top: 50px;
     }
     .opinionsSingle{
         width: max-content;
@@ -450,17 +475,19 @@
         height: 70px;
         border-radius: 100px;
         margin-bottom: 30px;
-        border: 1px solid rgb(165, 165, 165);
+        border: 1px solid rgb(190, 190, 190);
     }
     .opinionsSingle--message{
-       font-size: 18px;
+       font-size: 16px;
         margin-bottom: 30px;
-        color: #525252;
+        color: #383838;
+        font-family: 'Lato', sans-serif;
     }
 
     .opinionsSingle--author{
        font-size: 18px;
-        color: #535353;
+        color: #272727;
+        font-family: 'Lato', sans-serif;
     }
 
     .controlsOpinions{
@@ -493,30 +520,12 @@
         align-items: center;
     }
     .stayTurned h1{
-        color: rgb(32, 32, 32);
         font-family: Arial,tahoma,verdana;
         font-weight: lighter;
         margin-bottom: 20px;
         text-transform: uppercase;
-    }
-    .stayTurned p{
-        width: 500px;
-        color: #777777;
-        font-family: Arial,tahoma,verdana;
-        font-weight: lighter;
-        margin-bottom: 20px;
-        text-align: center;
-        font-size: 15px;
-    }
-    .stayTurned input{
-        width: 400px;
-        padding: 10px;
-        font-size: 18px;
-        outline: 0;
-        border: 1px solid rgb(141, 141, 141);
-        color: gray;
-        border-radius: 5px;
-        margin-bottom: 10px;
+        color: #2b2b2b;
+        font-family: 'Lato', sans-serif;
     }
     .stayTurned p{
         width: 500px;
@@ -539,11 +548,11 @@
     }
     .stayTurned button{
         padding: 8px 15px;
-        border: 1px solid rgb(182, 182, 182);
+        border: 0;
         cursor: pointer;
         background: rgb(0, 152, 240);
         color: white;
-        border-radius: 5px;
+        border-radius: 3px;
     }
     .stayTurned button:hover{
         background: rgb(0, 147, 233);
@@ -606,7 +615,7 @@
     @media screen and (max-width: 1020px){
         .mainPhrase{
             left: 3%;
-            font-size: 25px;
+            font-size: 25px !important;
         }
 
         .userOpinions--title,
@@ -631,13 +640,13 @@
     }
     @media screen and (max-width: 850px){
         .boxMainImage{
-            background-image: url('../assets/images/mainBannerMobile.jpg');
+            background-image: url('../assets/images/bannerMobile.png');
         }
         .mainPhrase{
-            width: 350px;
-            top: 10%;
+            width: 350px !important;
+            top: 8% !important;
             left: 20%;
-            font-size: 27px;
+            font-size: 27px !important;
         }
         footer h1{
             font-size: 24px;
@@ -673,9 +682,30 @@
         .empty{
             font-size: 16px;
         }
+        .productSingle{
+            width: 130px;
+            margin: 20px;
+        }
+        .productSingle img{
+            height: auto;
+        }
+        .productName,
+        .sex,
+        .productPrice{
+            font-size: 13px;
+        }
+        .boxProducts{
+            padding-top: 50px;
+        }
+        .userOpinions{
+            margin-top: 0;
+        }
     }
     
     @media screen and (max-width: 510px){
+        .boxProducts{
+            width: 100%;
+        }
         .userOpinions--title,
         .boxProducts h1,
         .stayTurned h1{
@@ -726,14 +756,17 @@
         .contacts h2{
             font-size: 16px;
         }
+        .textDetail{
+            width: 40px !important;
+        }
     }
 
     @media screen and (max-width: 435px){
         .mainPhrase{
-            width: 90%;
+            width: 90% !important;
             top: 15%;
             left: 5%;
-            font-size: 23px;
+            font-size: 23px !important;
         }
         .businessHours{
             width: 80%;
@@ -761,6 +794,12 @@
         }
         .opinionsSingle--message{
             font-size: 11px;
+        }
+        .productSingle{
+            width: calc(100% / 2 - 40px);
+        }
+        .showCase{
+            margin-top: 30px;
         }
     }
 </style>
