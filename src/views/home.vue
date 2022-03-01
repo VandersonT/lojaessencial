@@ -639,14 +639,16 @@
         }
     }
     @media screen and (max-width: 850px){
+
         .boxMainImage{
-            background-image: url('../assets/images/bannerMobile.png');
+            height: 300px !important;
         }
+
         .mainPhrase{
-            width: 350px !important;
-            top: 8% !important;
-            left: 20%;
-            font-size: 27px !important;
+            width: 250px !important;
+            top: 39% !important;
+            left: 6%;
+            font-size: 22px !important;
         }
         footer h1{
             font-size: 24px;
@@ -703,6 +705,17 @@
     }
     
     @media screen and (max-width: 510px){
+
+
+        .boxMainImage{
+            margin-top: 150px;
+            border: 1px solid rgb(194, 194, 194);
+            height: 250px !important;
+        }
+        .mainPhrase{
+            display: none;
+        }
+
         .boxProducts{
             width: 100%;
         }
